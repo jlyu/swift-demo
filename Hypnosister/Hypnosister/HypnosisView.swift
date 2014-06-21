@@ -34,6 +34,12 @@ class HypnosisView: UIView {
         CGContextSetLineWidth(ctx, 10)
         self.circleColor.setStroke() //UIColor.lightGrayColor().setStroke()
         for var currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20 {
+            
+            var r = Float(arc4random() % 101) / 100.0
+            var g = Float(arc4random() % 101) / 100.0
+            var b = Float(arc4random() % 101) / 100.0
+            self.circleColor = UIColor(red: r, green: g, blue: b, alpha: 0.618)
+            self.circleColor.setStroke()
             CGContextAddArc(ctx, center.x, center.y, currentRadius, 0.0, 3.141592653589792388 * 2.0, 0)
             CGContextStrokePath(ctx)
         }
@@ -64,7 +70,10 @@ class HypnosisView: UIView {
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent!) {
         if motion == UIEventSubtype.MotionShake {
             print("Device started sharked")
-            self.circleColor = UIColor.redColor()
+            var r = Float(arc4random() % 101) / 100.0
+            var g = Float(arc4random() % 101) / 100.0
+            var b = Float(arc4random() % 101) / 100.0
+            self.circleColor = UIColor(red: r, green: g, blue: b, alpha: 0.618)
         }
     }
 }

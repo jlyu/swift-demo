@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIScrollViewDelegate {
         scrollView.addSubview(hypnosisView)
         
         scrollView.contentSize = doubleFrame.size
-        scrollView.maximumZoomScale = 50.0
-        scrollView.minimumZoomScale = 0.1
+        scrollView.maximumZoomScale = 2.0
+        scrollView.minimumZoomScale = 1.0
         scrollView.delegate = self
         
         self.window!.addSubview(scrollView)

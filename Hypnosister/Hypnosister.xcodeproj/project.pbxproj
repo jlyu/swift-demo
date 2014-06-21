@@ -34,6 +34,7 @@
 		3623CF4B19546F6D0078F546 /* HypnosisterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypnosisterTests.swift; sourceTree = "<group>"; };
 		3623CF551954705A0078F546 /* HypnosisView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypnosisView.swift; sourceTree = "<group>"; };
 		3623CF57195487CA0078F546 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3623CF591955C4000078F546 /* test.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = test.playground; path = ../test.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,7 @@
 		3623CF4819546F6D0078F546 /* HypnosisterTests */ = {
 			isa = PBXGroup;
 			children = (
+				3623CF591955C4000078F546 /* test.playground */,
 				3623CF4B19546F6D0078F546 /* HypnosisterTests.swift */,
 				3623CF4919546F6D0078F546 /* Supporting Files */,
 			);
