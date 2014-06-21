@@ -28,6 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //anotherView.backgroundColor = UIColor.blueColor()
         //hypnosisView.addSubview(anotherView)
         
+        var becomeFirstResponder = hypnosisView.becomeFirstResponder()
+        if becomeFirstResponder {
+            print("HypnosisView became First Responder")
+        } else {
+            print("Could not become First Responder")
+        }
+        
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
         return true

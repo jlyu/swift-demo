@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Hypnosister/HypnosisView.swift"
-            timestampString = "424971154.900479"
+            timestampString = "425021080.808077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "drawRect(_:)"
             landmarkType = "5">
          </BreakpointContent>

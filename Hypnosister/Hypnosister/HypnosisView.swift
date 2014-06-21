@@ -11,8 +11,21 @@ import UIKit
 
 class HypnosisView: UIView {
     
+    var circleColor: UIColor = UIColor.clearColor()
+    
+    var circleColorAgent: UIColor
+    {
+        get { return UIColor.clearColor() }
+        set {
+            self.circleColor = newValue
+            self.setNeedsDisplay()
+        }
+    }
+    
     init(frame: CGRect) {
         super.init(frame:frame)
+
+        self.circleColorAgent = UIColor.lightGrayColor()
         self.backgroundColor = UIColor.clearColor()
     }
     
@@ -25,10 +38,7 @@ class HypnosisView: UIView {
                                           bounds.origin.y + bounds.size.height / 2.0)
         var maxRadius: CGFloat = hypotf(bounds.size.width, bounds.size.height) / 2.0
         CGContextSetLineWidth(ctx, 10)
-        //CGContextSetRGBStrokeColor(ctx, 0.6, 0.6, 0.6, 1.0)
-        UIColor.lightGrayColor().setStroke()
-        //CGContextAddArc(ctx, center.x, center.y, maxRadius, 0.0, 3.1415926 * 2.0, 0)
-        //CGContextStrokePath(ctx)
+        self.circleColor.setStroke() //UIColor.lightGrayColor().setStroke()
         for var currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20 {
             CGContextAddArc(ctx, center.x, center.y, currentRadius, 0.0, 3.141592653589792388 * 2.0, 0)
             CGContextStrokePath(ctx)
@@ -52,5 +62,15 @@ class HypnosisView: UIView {
         text.drawInRect(textRect, withFont: textFont)
         
     }
+ 
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
     
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent!) {
+        if motion == UIEventSubtype.MotionShake {
+            print("Device started sharked")
+            self.circleColorAgent = UIColor.redColor()
+        }
+    }
 }
