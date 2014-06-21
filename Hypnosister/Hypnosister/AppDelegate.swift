@@ -9,26 +9,36 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIScrollViewDelegate {
                             
     var window: UIWindow?
+    var hypnosisView: HypnosisView!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
+        // hide status bar
+        application.setStatusBarHidden(true, animated: true)
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
+        var screenFrame: CGRect = self.window!.bounds
         
-        //var hypnosisViewFrame: CGRect = CGRect(x: 160, y: 240, width: 100, height: 150)
-        var hypnosisView: HypnosisView = HypnosisView(frame: self.window!.frame)
-        //hypnosisView.backgroundColor = UIColor.redColor()
-        self.window!.addSubview(hypnosisView)
+        var scrollView: UIScrollView = UIScrollView(frame: screenFrame)
+        //scrollView.pagingEnabled = true
+        var doubleFrame: CGRect = screenFrame
+        hypnosisView = HypnosisView(frame: screenFrame)
+        scrollView.addSubview(hypnosisView)
         
-        //var anotherViewFrame: CGRect = CGRect(x: 20, y: 30, width: 50, height: 50)
-        //var anotherView: HypnosisView = HypnosisView(frame: anotherViewFrame)
-        //anotherView.backgroundColor = UIColor.blueColor()
-        //hypnosisView.addSubview(anotherView)
+        scrollView.contentSize = doubleFrame.size
+        scrollView.maximumZoomScale = 50.0
+        scrollView.minimumZoomScale = 0.1
+        scrollView.delegate = self
+        
+        self.window!.addSubview(scrollView)
+        
         
         var becomeFirstResponder = hypnosisView.becomeFirstResponder()
+        //anotherView.becomeFirstResponder()
         if becomeFirstResponder {
             print("HypnosisView became First Responder")
         } else {
@@ -38,6 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
         return true
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+        return hypnosisView
     }
 
     func applicationWillResignActive(application: UIApplication) {

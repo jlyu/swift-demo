@@ -11,21 +11,15 @@ import UIKit
 
 class HypnosisView: UIView {
     
-    var circleColor: UIColor = UIColor.clearColor()
-    
-    var circleColorAgent: UIColor
-    {
-        get { return UIColor.clearColor() }
-        set {
-            self.circleColor = newValue
-            self.setNeedsDisplay()
-        }
+    var circleColor: UIColor = UIColor.clearColor() {
+        willSet {}
+        didSet { self.setNeedsDisplay() }
     }
     
     init(frame: CGRect) {
         super.init(frame:frame)
 
-        self.circleColorAgent = UIColor.lightGrayColor()
+        self.circleColor = UIColor.lightGrayColor()
         self.backgroundColor = UIColor.clearColor()
     }
     
@@ -70,7 +64,7 @@ class HypnosisView: UIView {
     override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent!) {
         if motion == UIEventSubtype.MotionShake {
             print("Device started sharked")
-            self.circleColorAgent = UIColor.redColor()
+            self.circleColor = UIColor.redColor()
         }
     }
 }
