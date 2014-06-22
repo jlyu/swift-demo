@@ -12,18 +12,24 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        
         application.setStatusBarHidden(true, animated: true)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         var hypnoViewContrller: HypnosisViewController = HypnosisViewController()
-        
         var timeViewController: TimeViewController = TimeViewController()
         
-        self.window!.rootViewController = timeViewController //hypnoViewContrller
+        var tabBarController: UITabBarController = UITabBarController()
+        var viewControllers = [hypnoViewContrller, timeViewController]
+        tabBarController.setViewControllers(viewControllers, animated: true)
+        
+        
+        self.window!.rootViewController = tabBarController //timeViewController //hypnoViewContrller
         
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		360A737319567068000C9C0D /* TimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360A737219567068000C9C0D /* TimeViewController.xib */; };
 		360A7375195670A1000C9C0D /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360A7374195670A1000C9C0D /* TimeViewController.swift */; };
+		360A737B19570345000C9C0D /* Hypno.png in Resources */ = {isa = PBXBuildFile; fileRef = 360A737719570345000C9C0D /* Hypno.png */; };
+		360A737C19570345000C9C0D /* Hypno@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360A737819570345000C9C0D /* Hypno@2x.png */; };
+		360A737D19570345000C9C0D /* Time.png in Resources */ = {isa = PBXBuildFile; fileRef = 360A737919570345000C9C0D /* Time.png */; };
+		360A737E19570345000C9C0D /* Time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360A737A19570345000C9C0D /* Time@2x.png */; };
+		360A738019571551000C9C0D /* HypnosisView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360A737F19571551000C9C0D /* HypnosisView.xib */; };
 		36A66CF51955DA7A00E9D405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A66CF41955DA7A00E9D405 /* AppDelegate.swift */; };
 		36A66CF71955DA7A00E9D405 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36A66CF61955DA7A00E9D405 /* Images.xcassets */; };
 		36A66D031955DA7A00E9D405 /* HypnoTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A66D021955DA7A00E9D405 /* HypnoTimeTests.swift */; };
@@ -29,6 +34,11 @@
 /* Begin PBXFileReference section */
 		360A737219567068000C9C0D /* TimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeViewController.xib; sourceTree = "<group>"; };
 		360A7374195670A1000C9C0D /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		360A737719570345000C9C0D /* Hypno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Hypno.png; path = image/Hypno.png; sourceTree = "<group>"; };
+		360A737819570345000C9C0D /* Hypno@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Hypno@2x.png"; path = "image/Hypno@2x.png"; sourceTree = "<group>"; };
+		360A737919570345000C9C0D /* Time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Time.png; path = image/Time.png; sourceTree = "<group>"; };
+		360A737A19570345000C9C0D /* Time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Time@2x.png"; path = "image/Time@2x.png"; sourceTree = "<group>"; };
+		360A737F19571551000C9C0D /* HypnosisView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HypnosisView.xib; sourceTree = "<group>"; };
 		36A66CEF1955DA7A00E9D405 /* HypnoTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HypnoTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A66CF31955DA7A00E9D405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36A66CF41955DA7A00E9D405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +68,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360A737619570309000C9C0D /* image */ = {
+			isa = PBXGroup;
+			children = (
+				360A737719570345000C9C0D /* Hypno.png */,
+				360A737819570345000C9C0D /* Hypno@2x.png */,
+				360A737919570345000C9C0D /* Time.png */,
+				360A737A19570345000C9C0D /* Time@2x.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		36A66CE61955DA7A00E9D405 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +103,7 @@
 				36A66D0C1955DB1900E9D405 /* View */,
 				36A66D0D1955DB1F00E9D405 /* Controller */,
 				36A66CF41955DA7A00E9D405 /* AppDelegate.swift */,
+				360A737619570309000C9C0D /* image */,
 				36A66CF61955DA7A00E9D405 /* Images.xcassets */,
 				36A66CF21955DA7A00E9D405 /* Supporting Files */,
 			);
@@ -118,6 +140,7 @@
 			children = (
 				36A66D0E1955DB3E00E9D405 /* HypnosisView.swift */,
 				360A737219567068000C9C0D /* TimeViewController.xib */,
+				360A737F19571551000C9C0D /* HypnosisView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -211,7 +234,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				36A66CF71955DA7A00E9D405 /* Images.xcassets in Resources */,
+				360A737E19570345000C9C0D /* Time@2x.png in Resources */,
 				360A737319567068000C9C0D /* TimeViewController.xib in Resources */,
+				360A738019571551000C9C0D /* HypnosisView.xib in Resources */,
+				360A737D19570345000C9C0D /* Time.png in Resources */,
+				360A737B19570345000C9C0D /* Hypno.png in Resources */,
+				360A737C19570345000C9C0D /* Hypno@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
