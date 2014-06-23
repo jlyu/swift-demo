@@ -12,7 +12,7 @@ class HypnosisViewController: UIViewController {
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         if self != nil {
             var tbi: UITabBarItem = self.tabBarItem
             tbi.title = "Hypnosis"
@@ -23,6 +23,8 @@ class HypnosisViewController: UIViewController {
     }
     
     convenience init() {
+        var nibName: String = "HypnosisViewController"
+        var appBundle: NSBundle = NSBundle.mainBundle()
         self.init(nibName: nil, bundle: nil)
     }
 
@@ -38,8 +40,11 @@ class HypnosisViewController: UIViewController {
         super.viewDidLoad()
         println("HypnosisViewController loaded its view")
         
-        
     }
     
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.drawRect(UIScreen.mainScreen().bounds)
+    }
+
 }
