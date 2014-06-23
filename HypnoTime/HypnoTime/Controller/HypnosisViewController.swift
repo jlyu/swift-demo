@@ -17,24 +17,24 @@ class HypnosisViewController: UIViewController {
             var tbi: UITabBarItem = self.tabBarItem
             tbi.title = "Hypnosis"
             
-            var img: UIImage = UIImage(named: "Hypno@2x.png")
+            var img: UIImage = UIImage(named: "Hypno.png")
             tbi.image = img
         }
+        //self.view = HypnosisView(frame: UIScreen.mainScreen().bounds)
     }
     
     convenience init() {
         var nibName: String = "HypnosisViewController"
         var appBundle: NSBundle = NSBundle.mainBundle()
-        self.init(nibName: nil, bundle: nil)
+        self.init(nibName: nibName, bundle: appBundle)
     }
 
     
-    //override func loadView() {
-    //    var frame: CGRect = UIScreen.mainScreen().bounds
-    //    var hypnosisView: HypnosisView = HypnosisView(frame: frame)
-        
-    //    self.view = hypnosisView
-    //}
+    override func loadView() {
+     //   var hypnosisView: HypnosisView = HypnosisView(frame: UIScreen.mainScreen().bounds)
+      //  self.view = hypnosisView
+       // self.view.drawRect(UIScreen.mainScreen().bounds)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,10 @@ class HypnosisViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.drawRect(UIScreen.mainScreen().bounds)
+       // var frame: CGRect = UIScreen.mainScreen().bounds
+       // var hypnosisView: HypnosisView = HypnosisView(frame: frame)
+       // self.view = hypnosisView
+       // self.view.drawRect(frame)
     }
 
 }

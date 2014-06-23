@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimeViewController" customModule="HypnoTime" customModuleProvider="target">
             <connections>
                 <outlet property="timeLabel" destination="xOg-OS-aKb" id="9GP-57-Iv8"/>
-                <outlet property="view" destination="iN0-l3-epB" id="f2f-f5-vKs"/>
+                <outlet property="view" destination="iN0-l3-epB" id="0OU-72-IVT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

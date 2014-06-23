@@ -20,7 +20,7 @@ class TimeViewController: UIViewController {
             var tbi: UITabBarItem = self.tabBarItem
             tbi.title = "Time"
             
-            var img: UIImage = UIImage(named: "Time@2x.png")
+            var img: UIImage = UIImage(named: "Time.png")
             tbi.image = img
         }
     }
@@ -40,7 +40,7 @@ class TimeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         println("Time View Controller will appear")
         super.viewWillAppear(animated)
-        self.showCurrentTime(nil)
+       // self.showCurrentTime(nil)
     }
     
     override func viewWillDisappear(animated: Bool) {

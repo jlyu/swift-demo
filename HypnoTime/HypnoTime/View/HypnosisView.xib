@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HypnosisViewController" customModule="HypnoTime" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="iN0-l3-epB" id="KEz-pJ-36D"/>
+                <outlet property="view" destination="iN0-l3-epB" id="0lC-7a-w8D"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
