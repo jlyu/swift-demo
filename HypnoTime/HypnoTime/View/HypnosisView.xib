@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N0x-hp-aAm">
-                    <rect key="frame" x="99" y="67" width="123" height="29"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                     <segments>
                         <segment title="First"/>
                         <segment title="Second"/>
@@ -25,6 +25,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="129" y="92"/>
         </view>
     </objects>
 </document>

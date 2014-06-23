@@ -138,8 +138,8 @@
 		36A66D0C1955DB1900E9D405 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				360A7383195849AA000C9C0D /* HypnosisView.xib */,
 				360A7384195849AA000C9C0D /* TimeView.xib */,
+				360A7383195849AA000C9C0D /* HypnosisView.xib */,
 				36A66D0E1955DB3E00E9D405 /* HypnosisView.swift */,
 			);
 			name = View;

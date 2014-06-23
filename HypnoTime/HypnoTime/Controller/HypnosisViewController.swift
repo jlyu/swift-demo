@@ -37,7 +37,10 @@ class HypnosisViewController: UIViewController {
         if self.view {
             
             var frontView = self.view
-            var backView = HypnosisView(frame: UIScreen.mainScreen().bounds)
+            var hypoViewFrame: CGRect = UIScreen.mainScreen().bounds
+            hypoViewFrame.origin.y += 29
+            hypoViewFrame.size.height -= 29
+            var backView = HypnosisView(frame:hypoViewFrame)
             
             //self.view = backView
             //self.view.addSubview(frontView)
