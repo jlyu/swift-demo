@@ -26,7 +26,7 @@ class TimeViewController: UIViewController {
     }
     
     convenience init() {
-        var nibName: String = "TimeViewController"
+        var nibName: String = "TimeView"
         var appBundle: NSBundle = NSBundle.mainBundle()
         self.init(nibName: nibName, bundle: appBundle)
     }

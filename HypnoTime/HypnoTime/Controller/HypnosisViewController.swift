@@ -13,6 +13,7 @@ class HypnosisViewController: UIViewController {
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
         if self != nil {
             var tbi: UITabBarItem = self.tabBarItem
             tbi.title = "Hypnosis"
@@ -20,34 +21,33 @@ class HypnosisViewController: UIViewController {
             var img: UIImage = UIImage(named: "Hypno.png")
             tbi.image = img
         }
-        //self.view = HypnosisView(frame: UIScreen.mainScreen().bounds)
     }
     
     convenience init() {
-        var nibName: String = "HypnosisViewController"
+        
+        var nibName: String = "HypnosisView"
         var appBundle: NSBundle = NSBundle.mainBundle()
         self.init(nibName: nibName, bundle: appBundle)
     }
 
     
-    override func loadView() {
-     //   var hypnosisView: HypnosisView = HypnosisView(frame: UIScreen.mainScreen().bounds)
-      //  self.view = hypnosisView
-       // self.view.drawRect(UIScreen.mainScreen().bounds)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("HypnosisViewController loaded its view")
         
+        if self.view {
+            
+            var frontView = self.view
+            var backView = HypnosisView(frame: UIScreen.mainScreen().bounds)
+            
+            //self.view = backView
+            //self.view.addSubview(frontView)
+            
+            frontView.addSubview(backView)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-       // var frame: CGRect = UIScreen.mainScreen().bounds
-       // var hypnosisView: HypnosisView = HypnosisView(frame: frame)
-       // self.view = hypnosisView
-       // self.view.drawRect(frame)
     }
 
 }
