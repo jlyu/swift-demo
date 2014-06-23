@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3687361819586A1F0073ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3687361719586A1F0073ACC4 /* AppDelegate.swift */; };
+		3687361A19586A1F0073ACC4 /* RotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3687361919586A1F0073ACC4 /* RotationViewController.swift */; };
+		3687361D19586A1F0073ACC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3687361B19586A1F0073ACC4 /* Main.storyboard */; };
+		3687361F19586A1F0073ACC4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3687361E19586A1F0073ACC4 /* Images.xcassets */; };
+		3687362B19586A1F0073ACC4 /* HeavyRotationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3687362A19586A1F0073ACC4 /* HeavyRotationTests.swift */; };
+		3687363619586E600073ACC4 /* akagi.png in Resources */ = {isa = PBXBuildFile; fileRef = 3687363519586E600073ACC4 /* akagi.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3687362519586A1F0073ACC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3687360A19586A1F0073ACC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3687361119586A1F0073ACC4;
+			remoteInfo = HeavyRotation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3687361219586A1F0073ACC4 /* HeavyRotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeavyRotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3687361619586A1F0073ACC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3687361719586A1F0073ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3687361919586A1F0073ACC4 /* RotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationViewController.swift; sourceTree = "<group>"; };
+		3687361C19586A1F0073ACC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3687361E19586A1F0073ACC4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3687362419586A1F0073ACC4 /* HeavyRotationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeavyRotationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3687362919586A1F0073ACC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3687362A19586A1F0073ACC4 /* HeavyRotationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeavyRotationTests.swift; sourceTree = "<group>"; };
+		3687363519586E600073ACC4 /* akagi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = akagi.png; path = image/akagi.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3687360F19586A1F0073ACC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3687362119586A1F0073ACC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3687360919586A1F0073ACC4 = {
+			isa = PBXGroup;
+			children = (
+				3687361419586A1F0073ACC4 /* HeavyRotation */,
+				3687362719586A1F0073ACC4 /* HeavyRotationTests */,
+				3687361319586A1F0073ACC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3687361319586A1F0073ACC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3687361219586A1F0073ACC4 /* HeavyRotation.app */,
+				3687362419586A1F0073ACC4 /* HeavyRotationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3687361419586A1F0073ACC4 /* HeavyRotation */ = {
+			isa = PBXGroup;
+			children = (
+				3687361719586A1F0073ACC4 /* AppDelegate.swift */,
+				3687361919586A1F0073ACC4 /* RotationViewController.swift */,
+				3687361B19586A1F0073ACC4 /* Main.storyboard */,
+				3687361E19586A1F0073ACC4 /* Images.xcassets */,
+				3687363419586DCB0073ACC4 /* image */,
+				3687361519586A1F0073ACC4 /* Supporting Files */,
+			);
+			path = HeavyRotation;
+			sourceTree = "<group>";
+		};
+		3687361519586A1F0073ACC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3687361619586A1F0073ACC4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3687362719586A1F0073ACC4 /* HeavyRotationTests */ = {
+			isa = PBXGroup;
+			children = (
+				3687362A19586A1F0073ACC4 /* HeavyRotationTests.swift */,
+				3687362819586A1F0073ACC4 /* Supporting Files */,
+			);
+			path = HeavyRotationTests;
+			sourceTree = "<group>";
+		};
+		3687362819586A1F0073ACC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3687362919586A1F0073ACC4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3687363419586DCB0073ACC4 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				3687363519586E600073ACC4 /* akagi.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3687361119586A1F0073ACC4 /* HeavyRotation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3687362E19586A1F0073ACC4 /* Build configuration list for PBXNativeTarget "HeavyRotation" */;
+			buildPhases = (
+				3687360E19586A1F0073ACC4 /* Sources */,
+				3687360F19586A1F0073ACC4 /* Frameworks */,
+				3687361019586A1F0073ACC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeavyRotation;
+			productName = HeavyRotation;
+			productReference = 3687361219586A1F0073ACC4 /* HeavyRotation.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3687362319586A1F0073ACC4 /* HeavyRotationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3687363119586A1F0073ACC4 /* Build configuration list for PBXNativeTarget "HeavyRotationTests" */;
+			buildPhases = (
+				3687362019586A1F0073ACC4 /* Sources */,
+				3687362119586A1F0073ACC4 /* Frameworks */,
+				3687362219586A1F0073ACC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3687362619586A1F0073ACC4 /* PBXTargetDependency */,
+			);
+			name = HeavyRotationTests;
+			productName = HeavyRotationTests;
+			productReference = 3687362419586A1F0073ACC4 /* HeavyRotationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3687360A19586A1F0073ACC4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = chain;
+				TargetAttributes = {
+					3687361119586A1F0073ACC4 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					3687362319586A1F0073ACC4 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 3687361119586A1F0073ACC4;
+					};
+				};
+			};
+			buildConfigurationList = 3687360D19586A1F0073ACC4 /* Build configuration list for PBXProject "HeavyRotation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3687360919586A1F0073ACC4;
+			productRefGroup = 3687361319586A1F0073ACC4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3687361119586A1F0073ACC4 /* HeavyRotation */,
+				3687362319586A1F0073ACC4 /* HeavyRotationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3687361019586A1F0073ACC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3687361D19586A1F0073ACC4 /* Main.storyboard in Resources */,
+				3687361F19586A1F0073ACC4 /* Images.xcassets in Resources */,
+				3687363619586E600073ACC4 /* akagi.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3687362219586A1F0073ACC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3687360E19586A1F0073ACC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3687361A19586A1F0073ACC4 /* RotationViewController.swift in Sources */,
+				3687361819586A1F0073ACC4 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3687362019586A1F0073ACC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3687362B19586A1F0073ACC4 /* HeavyRotationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3687362619586A1F0073ACC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3687361119586A1F0073ACC4 /* HeavyRotation */;
+			targetProxy = 3687362519586A1F0073ACC4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3687361B19586A1F0073ACC4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3687361C19586A1F0073ACC4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3687362C19586A1F0073ACC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3687362D19586A1F0073ACC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3687362F19586A1F0073ACC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = HeavyRotation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3687363019586A1F0073ACC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = HeavyRotation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3687363219586A1F0073ACC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HeavyRotation.app/HeavyRotation";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HeavyRotationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		3687363319586A1F0073ACC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HeavyRotation.app/HeavyRotation";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HeavyRotationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3687360D19586A1F0073ACC4 /* Build configuration list for PBXProject "HeavyRotation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3687362C19586A1F0073ACC4 /* Debug */,
+				3687362D19586A1F0073ACC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3687362E19586A1F0073ACC4 /* Build configuration list for PBXNativeTarget "HeavyRotation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3687362F19586A1F0073ACC4 /* Debug */,
+				3687363019586A1F0073ACC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3687363119586A1F0073ACC4 /* Build configuration list for PBXNativeTarget "HeavyRotationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3687363219586A1F0073ACC4 /* Debug */,
+				3687363319586A1F0073ACC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3687360A19586A1F0073ACC4 /* Project object */;
+}
