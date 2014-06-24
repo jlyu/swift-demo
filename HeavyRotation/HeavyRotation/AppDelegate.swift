@@ -18,12 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var device: UIDevice = UIDevice.currentDevice()
         device.beginGeneratingDeviceOrientationNotifications()
+        device.proximityMonitoringEnabled = true
         
         var nc: NSNotificationCenter = NSNotificationCenter.defaultCenter()
         nc.addObserver(self,
                        selector: "orientationChanged:",
                        name: UIDeviceOrientationDidChangeNotification,
                        object: device)
+        
+        nc.addObserver(self,
+                        selector: "proximityMonitoring:",
+                        name: UIDeviceProximityStateDidChangeNotification,
+                        object: device)
         
         var storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let rorViewControll: RotationViewController = storyBoard.instantiateViewControllerWithIdentifier("RotationViewController") as RotationViewController
@@ -34,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func orientationChanged(note: NSNotification) {
         println("orientationChanged -> ")
+    }
+    
+    func proximityMonitoring(note: NSNotification) {
+        println("proximityMonitoring ->")
     }
 
     func applicationWillResignActive(application: UIApplication) {
