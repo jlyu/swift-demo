@@ -22,7 +22,7 @@ class BNRItem {
     }
     
     func description() -> String! {
-        var description: String = "\(self.itemName) (\(self.serialNumber)): Worth \(self.valueInDollars), recorded on \(self.dateCreated)"
+        var description: String = "\(self.itemName) (\(self.serialNumber)): Worth $\(self.valueInDollars), recorded on \(self.dateCreated)"
         return description
     }
     
