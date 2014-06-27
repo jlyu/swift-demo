@@ -40,7 +40,7 @@ class BNRItem {
 
 extension Array {
     func randomItem() -> T {
-        let index = Int(arc4random() % UInt32(self.count + 1))
+        let index = Int(arc4random() % UInt32(self.count))
         return self[index]
     }
 }

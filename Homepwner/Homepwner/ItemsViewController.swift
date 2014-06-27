@@ -13,6 +13,9 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     init() {
         //super.init(style: UITableViewStyle.Grouped)
         super.init(nibName: nil, bundle: nil)
+        for i in 0..5 {
+            BNRItemStore.instance.createItem()
+        }
         
     }
     /*
