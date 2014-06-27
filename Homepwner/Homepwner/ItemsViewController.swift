@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ItemsViewController: UITableViewController {
-    /*
+class ItemsViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
+    
     init() {
-        super.init(style: UITableViewStyle.Grouped)
+        //super.init(style: UITableViewStyle.Grouped)
+        super.init(nibName: nil, bundle: nil)
         
     }
-    
+    /*
     convenience init(style: UITableViewStyle) {
         self.init()
     }

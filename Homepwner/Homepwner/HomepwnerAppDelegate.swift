@@ -13,14 +13,13 @@ class HomepwnerAppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
+        
         
         var itemsViewController: ItemsViewController = ItemsViewController()
-        self.window!.rootViewController = itemsViewController
         
+        self.window!.rootViewController = itemsViewController
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
         return true
