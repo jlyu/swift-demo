@@ -33,12 +33,18 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Default,
-                                                    reuseIdentifier: "UITableViewCell")
-        var item: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
-        cell.textLabel.text = item.description()
         
-        return cell
+        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("UITableViewCell") as? UITableViewCell
+        
+        if !cell {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default,
+                                    reuseIdentifier: "UITableViewCell")
+        }
+        
+        var item: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
+        cell!.textLabel.text = item.description()
+        
+        return cell!
     }
 
 }
