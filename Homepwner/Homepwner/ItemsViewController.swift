@@ -27,4 +27,18 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         self.init()
     }
     */
+    
+    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return BNRItemStore.instance.allItems.count
+    }
+    
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Default,
+                                                    reuseIdentifier: "UITableViewCell")
+        var item: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
+        cell.textLabel.text = item.description()
+        
+        return cell
+    }
+
 }

@@ -34,7 +34,7 @@ class BNRItemStore: NSObject {
     
     func createItem() -> BNRItem {
         var item: BNRItem = BNRItem.randomItem()
-        println(item.description())
+        //println(item.description())
         allItems.append(item)
         return item
     }
