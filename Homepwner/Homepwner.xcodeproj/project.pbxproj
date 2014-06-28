@@ -11,8 +11,9 @@
 		366E38951959C3FB00219522 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366E38941959C3FB00219522 /* Images.xcassets */; };
 		366E38A11959C3FB00219522 /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E38A01959C3FB00219522 /* HomepwnerTests.swift */; };
 		366E38AB1959C41A00219522 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E38AA1959C41A00219522 /* ItemsViewController.swift */; };
-		366E38AE1959C5D700219522 /* BNRItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E38AD1959C5D700219522 /* BNRItemStore.swift */; };
-		366E38B01959C61200219522 /* BNRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366E38AF1959C61200219522 /* BNRItem.swift */; };
+		36F110D6195F0560000B4910 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F110D5195F0560000B4910 /* HeaderView.xib */; };
+		36F110D9195F0593000B4910 /* BNRItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F110D7195F0593000B4910 /* BNRItemStore.swift */; };
+		36F110DA195F0593000B4910 /* BNRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F110D8195F0593000B4910 /* BNRItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +35,9 @@
 		366E389F1959C3FB00219522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		366E38A01959C3FB00219522 /* HomepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerTests.swift; sourceTree = "<group>"; };
 		366E38AA1959C41A00219522 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
-		366E38AD1959C5D700219522 /* BNRItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNRItemStore.swift; sourceTree = "<group>"; };
-		366E38AF1959C61200219522 /* BNRItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNRItem.swift; sourceTree = "<group>"; };
+		36F110D5195F0560000B4910 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderView.xib; path = View/HeaderView.xib; sourceTree = "<group>"; };
+		36F110D7195F0593000B4910 /* BNRItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BNRItemStore.swift; path = Model/BNRItemStore.swift; sourceTree = "<group>"; };
+		36F110D8195F0593000B4910 /* BNRItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BNRItem.swift; path = Model/BNRItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +116,19 @@
 		366E38AC1959C5A400219522 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				366E38AF1959C61200219522 /* BNRItem.swift */,
-				366E38AD1959C5D700219522 /* BNRItemStore.swift */,
+				36F110D7195F0593000B4910 /* BNRItemStore.swift */,
+				36F110D8195F0593000B4910 /* BNRItem.swift */,
+				36F110D2195F04BD000B4910 /* View */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		36F110D2195F04BD000B4910 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36F110D5195F0560000B4910 /* HeaderView.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				366E38951959C3FB00219522 /* Images.xcassets in Resources */,
+				36F110D6195F0560000B4910 /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				366E38931959C3FB00219522 /* HomepwnerAppDelegate.swift in Sources */,
-				366E38B01959C61200219522 /* BNRItem.swift in Sources */,
-				366E38AE1959C5D700219522 /* BNRItemStore.swift in Sources */,
+				36F110DA195F0593000B4910 /* BNRItem.swift in Sources */,
+				36F110D9195F0593000B4910 /* BNRItemStore.swift in Sources */,
 				366E38AB1959C41A00219522 /* ItemsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +411,7 @@
 				366E38A61959C3FB00219522 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		366E38A71959C3FB00219522 /* Build configuration list for PBXNativeTarget "HomepwnerTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +420,7 @@
 				366E38A91959C3FB00219522 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

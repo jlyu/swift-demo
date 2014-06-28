@@ -13,9 +13,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     init() {
         //super.init(style: UITableViewStyle.Grouped)
         super.init(nibName: nil, bundle: nil)
-        for i in 0..5 {
+        for i in 0..50 {
             BNRItemStore.instance.createItem()
         }
+        tableView.editing = true
         
     }
     /*
