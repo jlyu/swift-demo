@@ -10,13 +10,26 @@ import UIKit
 
 class ItemsViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var headerView : UIView?
+    
+    @IBAction func toggleEditingMode(sender : AnyObject) {
+    }
+    @IBAction func addNewItem(sender : AnyObject) {
+    }
+    
     init() {
         //super.init(style: UITableViewStyle.Grouped)
         super.init(nibName: nil, bundle: nil)
+        
+        // load tableHeaderView
+        if self.headerView == nil {
+            NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil)
+        }
+        
         for i in 0..50 {
             BNRItemStore.instance.createItem()
         }
-        tableView.editing = true
+        //tableView.editing = true
         
     }
     /*
@@ -28,6 +41,15 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         self.init()
     }
     */
+    
+    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+        return self.headerView
+    }
+    
+    override  func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.headerView!.bounds.size.height
+    }
+    
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return BNRItemStore.instance.allItems.count
