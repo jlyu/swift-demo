@@ -13,7 +13,17 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     @IBOutlet var headerView : UIView?
     
     @IBAction func toggleEditingMode(sender : AnyObject) {
+        println("Button Down")
+        if self.tableView.editing {
+            sender.setTitle("Edit", forState: UIControlState.Normal)
+            self.tableView.editing = false
+        } else {
+            sender.setTitle("Done", forState: UIControlState.Normal)
+            self.tableView.editing = true
+        }
     }
+
+    
     @IBAction func addNewItem(sender : AnyObject) {
     }
     
