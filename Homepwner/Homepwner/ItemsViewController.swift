@@ -13,7 +13,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     @IBOutlet var headerView : UIView?
     
     @IBAction func toggleEditingMode(sender : AnyObject) {
-        println("Button Down")
+      
         if self.tableView.editing {
             sender.setTitle("Edit", forState: UIControlState.Normal)
             self.tableView.editing = false
@@ -25,6 +25,11 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
 
     
     @IBAction func addNewItem(sender : AnyObject) {
+        var newItem: BNRItem = BNRItemStore.instance.createItem()
+        var lastRow: Int = BNRItemStore.instance.allItems.indexOfObject(newItem)!
+        var ips: NSIndexPath = NSIndexPath(forRow: lastRow, inSection: 0)
+        
+        self.tableView.insertRowsAtIndexPaths(NSArray(object:ips), withRowAnimation: UITableViewRowAnimation.Top)
     }
     
     init() {
@@ -36,7 +41,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
             NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil)
         }
         
-        for i in 0..50 {
+        for i in 0..2 {
             BNRItemStore.instance.createItem()
         }
         //tableView.editing = true

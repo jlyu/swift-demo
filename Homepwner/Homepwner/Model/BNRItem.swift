@@ -43,4 +43,8 @@ extension Array {
         let index = Int(arc4random() % UInt32(self.count))
         return self[index]
     }
+    
+    func indexOfObject(object: AnyObject) -> Int? {
+        return (self as NSArray).indexOfObject(object)
+    }
 }

@@ -116,8 +116,8 @@
 		366E38AC1959C5A400219522 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				36F110D7195F0593000B4910 /* BNRItemStore.swift */,
 				36F110D8195F0593000B4910 /* BNRItem.swift */,
+				36F110D7195F0593000B4910 /* BNRItemStore.swift */,
 				36F110D2195F04BD000B4910 /* View */,
 			);
 			name = Model;
