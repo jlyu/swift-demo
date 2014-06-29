@@ -26,7 +26,7 @@ class BNRItemStore: NSObject {
     }
     
     
-    var allItems: BNRItem[] = []
+    var allItems: Array<BNRItem> = []
     
     func allOfItems() -> Array<BNRItem> {
         return allItems
@@ -39,17 +39,19 @@ class BNRItemStore: NSObject {
         return item
     }
     
-    
-   /* Singleton
-    class var staticShareStore: BNRItemStore  {
-       if self == nil {
-            return super.allocWithZone(nil) as BNRItemStore
-       }
-       return self
+    func removeItem(item: BNRItem) {
+        for i in 0..allItems.count {
+            if item === allItems[i] {
+                allItems.removeAtIndex(i)
+                return
+            }
+        }
     }
     
-    class func shareStore() -> BNRItemStore {
-        return staticShareStore
+    func moveItemAtIndex(from: Int, toIndex to: Int) {
+        if from == to { return }
+        var fromItem: BNRItem = BNRItemStore.instance.allItems.objectAtIndex(from) as BNRItem
+        allItems.removeAtIndex(from)
+        allItems.insert(fromItem, atIndex: to)
     }
-    */
 }

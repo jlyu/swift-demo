@@ -45,17 +45,12 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
             BNRItemStore.instance.createItem()
         }
         //tableView.editing = true
-        
-    }
-    /*
-    convenience init(style: UITableViewStyle) {
-        self.init()
     }
     
-    convenience init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        self.init()
-    }
-    */
+    
+    //convenience init(style: UITableViewStyle) {
+    //    self.init()
+    //}
     
     override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
         return self.headerView
@@ -83,6 +78,22 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         cell!.textLabel.text = item.description()
         
         return cell!
+    }
+    
+    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            BNRItemStore.instance.allItems.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths(NSArray(object: indexPath), withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
+    override  func tableView(tableView: UITableView!, moveRowAtIndexPath sourceIndexPath: NSIndexPath!, toIndexPath destinationIndexPath: NSIndexPath!) {
+        BNRItemStore.instance.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+    }
+    
+    override func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String! {
+        return "删除"
     }
 
 }

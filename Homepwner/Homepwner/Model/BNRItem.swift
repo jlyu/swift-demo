@@ -47,4 +47,8 @@ extension Array {
     func indexOfObject(object: AnyObject) -> Int? {
         return (self as NSArray).indexOfObject(object)
     }
+    
+    func objectAtIndex(index: Int) -> AnyObject? {
+        return (self as NSArray).objectAtIndex(index)
+    }
 }
