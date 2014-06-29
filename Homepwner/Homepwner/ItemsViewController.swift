@@ -62,7 +62,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return BNRItemStore.instance.allItems.count
+        return BNRItemStore.instance.allItems.count + 1
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
@@ -74,8 +74,12 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
                                     reuseIdentifier: "UITableViewCell")
         }
         
-        var item: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
-        cell!.textLabel.text = item.description()
+        if indexPath.row == BNRItemStore.instance.allItems.count {
+            cell!.textLabel.text = "No more items !"
+        } else {
+            var item: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
+            cell!.textLabel.text = item.description()
+        }
         
         return cell!
     }
@@ -89,8 +93,18 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
     
     override  func tableView(tableView: UITableView!, moveRowAtIndexPath sourceIndexPath: NSIndexPath!, toIndexPath destinationIndexPath: NSIndexPath!) {
+        
         BNRItemStore.instance.moveItemAtIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
+        
     }
+    
+    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        if indexPath.row ==  BNRItemStore.instance.allItems.count {
+            return false
+        }
+        return true
+    }
+
     
     override func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String! {
         return "删除"
