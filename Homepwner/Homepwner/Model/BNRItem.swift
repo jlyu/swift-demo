@@ -22,17 +22,17 @@ class BNRItem {
     }
     
     func description() -> String! {
-        var description: String = "\(self.itemName) (\(self.serialNumber)): Worth $\(self.valueInDollars), recorded on \(self.dateCreated)"
+        var description: String = "\(self.itemName) (\(self.serialNumber)): $\(self.valueInDollars)@\(self.dateCreated)"
         return description
     }
     
     class func randomItem() -> BNRItem {
-        let randomAdjectiveList = ["Fluffy", "Rusty", "ObjC"]
-        let randomNounList = ["Bear", "Spork", "Mac"]
+        let randomAdjectiveList = ["Swift", "Rusty", "ObjC"]
+        let randomNounList = ["iPad", "iPhone", "Mac"]
         let rA = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
         let randomName = "\(randomAdjectiveList.randomItem()) \(randomNounList.randomItem())"
         let randomValue = Int(arc4random() % UInt32(100 + 1))
-        let randomSerialNumber = "0\(rA.randomItem())A\(rA.randomItem())0\(rA.randomItem())A\(rA.randomItem())O\(rA.randomItem())"
+        let randomSerialNumber = "0\(rA.randomItem())A\(rA.randomItem())"
         
         return BNRItem(itemName: randomName, valueInDollars: randomValue, serialNumber: randomSerialNumber)
     }
