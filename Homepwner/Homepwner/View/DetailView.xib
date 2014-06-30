@@ -7,10 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Homepwner" customModuleProvider="target">
             <connections>
                 <outlet property="dateLabel" destination="Tsa-JC-nDh" id="vFV-Qu-GK3"/>
-                <outlet property="detailView" destination="iN0-l3-epB" id="wYz-hx-uHv"/>
                 <outlet property="nameField" destination="CBA-Dl-uz8" id="j0Y-uC-VbJ"/>
                 <outlet property="serialNumberField" destination="ZH1-WY-xET" id="wFq-nX-rke"/>
                 <outlet property="valueField" destination="w6c-bq-TAi" id="cbV-NU-5wt"/>
+                <outlet property="view" destination="iN0-l3-epB" id="LWO-U9-CAf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

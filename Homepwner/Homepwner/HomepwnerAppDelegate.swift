@@ -16,9 +16,7 @@ class HomepwnerAppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        
         var itemsViewController: ItemsViewController = ItemsViewController()
-        
         var naviController: UINavigationController = UINavigationController(rootViewController: itemsViewController)
         
         self.window!.rootViewController = naviController

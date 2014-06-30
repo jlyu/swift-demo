@@ -22,7 +22,6 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
             self.tableView.editing = true
         }
     }
-
     
     @IBAction func addNewItem(sender : AnyObject) {
         var newItem: BNRItem = BNRItemStore.instance.createItem()
@@ -33,7 +32,6 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
     
     init() {
-        //super.init(style: UITableViewStyle.Grouped)
         super.init(nibName: nil, bundle: nil)
         
         // load tableHeaderView
@@ -44,13 +42,13 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         for i in 0..2 {
             BNRItemStore.instance.createItem()
         }
-        //tableView.editing = true
     }
     
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        var detailView: DetailViewController = DetailViewController()
+        self.navigationController.pushViewController(detailView, animated: true)
+    }
     
-    //convenience init(style: UITableViewStyle) {
-    //    self.init()
-    //}
     
     override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
         return self.headerView
