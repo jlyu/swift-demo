@@ -19,7 +19,9 @@ class HomepwnerAppDelegate: UIResponder, UIApplicationDelegate {
         
         var itemsViewController: ItemsViewController = ItemsViewController()
         
-        self.window!.rootViewController = itemsViewController
+        var naviController: UINavigationController = UINavigationController(rootViewController: itemsViewController)
+        
+        self.window!.rootViewController = naviController
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
         return true
