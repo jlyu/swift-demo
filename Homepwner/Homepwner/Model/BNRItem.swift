@@ -20,7 +20,7 @@ class BNRItem {
         self.serialNumber = num
         self.dateCreated = NSDate()
     }
-    
+        
     func description() -> String! {
         var description: String = "\(self.itemName) (\(self.serialNumber)): $\(self.valueInDollars)@\(self.dateCreated)"
         return description

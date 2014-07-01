@@ -46,6 +46,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         var detailView: DetailViewController = DetailViewController()
+        
+        var selectedItem: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
+        detailView.item = selectedItem
+        
         self.navigationController.pushViewController(detailView, animated: true)
     }
     

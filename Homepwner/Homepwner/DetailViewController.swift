@@ -15,6 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet var valueField : UITextField
     @IBOutlet var dateLabel : UILabel
     
+    var item: BNRItem?
+    
     /*
     init() {
         super.init(nibName: "DetailView", bundle: NSBundle.mainBundle())
@@ -28,5 +30,17 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.groupTableViewBackgroundColor()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        nameField.text = item!.itemName
+        serialNumberField.text = item!.serialNumber
+        valueField.text = String(item!.valueInDollars)
+        
+        var dateFormatter: NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        dateLabel.text = dateFormatter.stringFromDate(item!.dateCreated)
     }
 }
