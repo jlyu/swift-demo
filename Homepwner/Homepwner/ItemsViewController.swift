@@ -40,6 +40,9 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
             NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil)
         }
         
+        self.navigationItem.title = "Homepwner"
+        
+        
         for i in 0..2 {
             BNRItemStore.instance.createItem()
         }
