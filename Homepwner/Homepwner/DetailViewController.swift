@@ -15,7 +15,11 @@ class DetailViewController: UIViewController {
     @IBOutlet var valueField : UITextField
     @IBOutlet var dateLabel : UILabel
     
-    var item: BNRItem?
+    var item: BNRItem? = nil {
+        willSet(newValue) {
+            self.navigationItem.title = newValue!.itemName
+        }
+    }
     
     /*
     init() {

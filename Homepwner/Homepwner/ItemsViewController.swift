@@ -42,6 +42,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         
         self.navigationItem.title = "Homepwner"
         
+        var barButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add,
+            target: self, action: "addNewItem:")
+        self.navigationItem.rightBarButtonItem = barButtonItem
+        
         
         for i in 0..2 {
             BNRItemStore.instance.createItem()
