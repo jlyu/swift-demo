@@ -32,6 +32,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
     
     init() {
+        
         super.init(nibName: nil, bundle: nil)
         
         // load tableHeaderView

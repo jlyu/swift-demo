@@ -6,7 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemsViewController" customModule="Homepwner" customModuleProvider="target">
             <connections>
-                <outlet property="headerView" destination="dEn-e6-Hk4" id="gP8-Up-3yZ"/>
+                <outlet property="headerView" destination="dEn-e6-Hk4" id="Jn5-Cs-llT"/>
+                <outlet property="view" destination="dEn-e6-Hk4" id="0qe-rC-dX8"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
