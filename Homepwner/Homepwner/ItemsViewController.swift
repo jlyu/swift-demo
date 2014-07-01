@@ -44,6 +44,11 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         var detailView: DetailViewController = DetailViewController()
         

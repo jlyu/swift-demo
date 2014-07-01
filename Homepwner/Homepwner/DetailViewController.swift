@@ -43,4 +43,13 @@ class DetailViewController: UIViewController {
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         dateLabel.text = dateFormatter.stringFromDate(item!.dateCreated)
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.editing = true
+        
+        item!.itemName = nameField.text
+        item!.serialNumber = serialNumberField.text
+        item!.valueInDollars = valueField.text.toInt()!
+
+    }
 }
