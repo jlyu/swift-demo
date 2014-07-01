@@ -45,7 +45,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         var barButtonItem: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add,
             target: self, action: "addNewItem:")
         self.navigationItem.rightBarButtonItem = barButtonItem
-        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         for i in 0..2 {
             BNRItemStore.instance.createItem()
