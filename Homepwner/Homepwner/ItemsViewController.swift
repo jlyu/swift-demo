@@ -10,19 +10,7 @@ import UIKit
 
 class ItemsViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var headerView : UIView?
-    
-    @IBAction func toggleEditingMode(sender : AnyObject) {
-      
-        if self.tableView.editing {
-            sender.setTitle("Edit", forState: UIControlState.Normal)
-            self.tableView.editing = false
-        } else {
-            sender.setTitle("Done", forState: UIControlState.Normal)
-            self.tableView.editing = true
-        }
-    }
-    
+
     @IBAction func addNewItem(sender : AnyObject) {
         var newItem: BNRItem = BNRItemStore.instance.createItem()
         var lastRow: Int = BNRItemStore.instance.allItems.indexOfObject(newItem)!
@@ -30,15 +18,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         
         self.tableView.insertRowsAtIndexPaths(NSArray(object:ips), withRowAnimation: UITableViewRowAnimation.Top)
     }
-    
+
     init() {
         
         super.init(nibName: nil, bundle: nil)
-        
-        // load tableHeaderView
-        if self.headerView == nil {
-            NSBundle.mainBundle().loadNibNamed("HeaderView", owner: self, options: nil)
-        }
         
         self.navigationItem.title = "Homepwner"
         
@@ -65,16 +48,6 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         
         self.navigationController.pushViewController(detailView, animated: true)
     }
-    
-    
-    override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
-        return self.headerView
-    }
-    
-    override  func tableView(tableView: UITableView!, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.headerView!.bounds.size.height
-    }
-    
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return BNRItemStore.instance.allItems.count + 1
@@ -120,7 +93,6 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         return true
     }
 
-    
     override func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String! {
         return "删除"
     }

@@ -8,12 +8,14 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController,
+                            UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet var nameField : UITextField
     @IBOutlet var serialNumberField : UITextField
     @IBOutlet var valueField : UITextField
     @IBOutlet var dateLabel : UILabel
+    @IBOutlet var imageView : UIImageView
     
     var item: BNRItem? = nil {
         willSet(newValue) {
@@ -30,6 +32,18 @@ class DetailViewController: UIViewController {
         self.init()
     }
     */
+    @IBAction func takePicture(sender : AnyObject) {
+        var imagePickerController: UIImagePickerController = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
+        } else {
+            imagePickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        }
+        imagePickerController.delegate = self
+        
+        //set modal view
+        self.presentViewController(imagePickerController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,5 +69,14 @@ class DetailViewController: UIViewController {
         item!.serialNumber = serialNumberField.text
         item!.valueInDollars = valueField.text.toInt()!
 
+    }
+    
+    // conform UIImagePickerControllerDelegation
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+        var image: UIImage  = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        
+        imageView.image = image //NG
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
