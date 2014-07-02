@@ -22,18 +22,18 @@ class BNRImageStore: NSObject {
     
     init() { }
 
-    var imageDict: Dictionary<String, UIImage> = Dictionary<String, UIImage>(minimumCapacity: 32)
+    var imageDict: Dictionary<NSString, UIImage> = Dictionary()
     
-    func setImage(img: UIImage, forKey key: String) {
-        imageDict[key] = img
+    func setImage(img: UIImage, forKey key: NSString) {
+        self.imageDict[key] = img
     }
     
-    func imageForKey(key: String) -> UIImage? {
-        return imageDict[key]
+    func imageForKey(key: NSString) -> UIImage? {
+        return self.imageDict[key]
     }
     
-    func deleteImageForKey(key: String) {
-        imageDict.removeValueForKey(key)
+    func deleteImageForKey(key: NSString) {
+        self.imageDict.removeValueForKey(key)
     }
     
 }

@@ -60,6 +60,13 @@ class DetailViewController: UIViewController,
         dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
         dateLabel.text = dateFormatter.stringFromDate(item!.dateCreated)
+        
+       
+        if item!.imageKey != "" {
+            imageView.image = BNRImageStore.instance.imageForKey(item!.imageKey)
+        } else {
+            imageView.image = nil
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -75,7 +82,17 @@ class DetailViewController: UIViewController,
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
         var image: UIImage  = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
-        imageView.image = image //NG
+        let newUniqueID: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
+        let newUniqueIDString: CFStringRef = CFUUIDCreateString(kCFAllocatorDefault, newUniqueID)
+        
+        let key: NSString = newUniqueIDString as NSString
+        item!.imageKey = key
+        BNRImageStore.instance.setImage(image, forKey: item!.imageKey)
+        
+        CFRelease(newUniqueIDString)
+        CFRelease(newUniqueID)
+        
+        imageView.image = image
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
