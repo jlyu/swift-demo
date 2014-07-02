@@ -13,7 +13,7 @@ class BNRItem {
     var valueInDollars: Int = 0
     var serialNumber: String = "0000"
     var dateCreated: NSDate = NSDate()
-    var imageKey: NSString = "" //TODO: change to optional value
+    var imageKey: String?
     
     init(itemName name: String, valueInDollars value: Int, serialNumber num: String) {
         self.itemName = name

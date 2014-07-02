@@ -62,8 +62,8 @@ class DetailViewController: UIViewController,
         dateLabel.text = dateFormatter.stringFromDate(item!.dateCreated)
         
        
-        if item!.imageKey != "" {
-            imageView.image = BNRImageStore.instance.imageForKey(item!.imageKey)
+        if let imageKey: String = item!.imageKey {
+            imageView.image = BNRImageStore.instance.imageForKey(imageKey)
         } else {
             imageView.image = nil
         }
@@ -82,15 +82,16 @@ class DetailViewController: UIViewController,
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
         var image: UIImage  = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
-        let newUniqueID: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
-        let newUniqueIDString: CFStringRef = CFUUIDCreateString(kCFAllocatorDefault, newUniqueID)
+        // since that has "Create" in the name, code is responsible for releasing the object.
+        var newUniqueID: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
+        var newUniqueIDString: CFStringRef = CFUUIDCreateString(kCFAllocatorDefault, newUniqueID)
         
-        let key: NSString = newUniqueIDString as NSString
+        var key: String = String(newUniqueIDString as String)
         item!.imageKey = key
-        BNRImageStore.instance.setImage(image, forKey: item!.imageKey)
+        BNRImageStore.instance.setImage(image, forKey: key)
         
-        CFRelease(newUniqueIDString)
-        CFRelease(newUniqueID)
+        //CFRelease(newUniqueIDString) // TODO: why can't release ?
+        //CFRelease(newUniqueID)
         
         imageView.image = image
         
