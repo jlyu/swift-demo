@@ -16,6 +16,7 @@
 		36F110DA195F0593000B4910 /* BNRItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F110D8195F0593000B4910 /* BNRItem.swift */; };
 		36F110DC1961AA78000B4910 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F110DB1961AA78000B4910 /* DetailViewController.swift */; };
 		36F110E01961AB19000B4910 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36F110DF1961AB19000B4910 /* DetailView.xib */; };
+		36F110E419643ACA000B4910 /* BNRImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F110E319643ACA000B4910 /* BNRImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		36F110D8195F0593000B4910 /* BNRItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BNRItem.swift; path = Model/BNRItem.swift; sourceTree = "<group>"; };
 		36F110DB1961AA78000B4910 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		36F110DF1961AB19000B4910 /* DetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailView.xib; path = View/DetailView.xib; sourceTree = "<group>"; };
+		36F110E319643ACA000B4910 /* BNRImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BNRImageStore.swift; path = Model/BNRImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				36F110D8195F0593000B4910 /* BNRItem.swift */,
 				36F110D7195F0593000B4910 /* BNRItemStore.swift */,
+				36F110E319643ACA000B4910 /* BNRImageStore.swift */,
 				36F110D2195F04BD000B4910 /* View */,
 			);
 			name = Model;
@@ -241,6 +244,7 @@
 				36F110DC1961AA78000B4910 /* DetailViewController.swift in Sources */,
 				36F110D9195F0593000B4910 /* BNRItemStore.swift in Sources */,
 				366E38AB1959C41A00219522 /* ItemsViewController.swift in Sources */,
+				36F110E419643ACA000B4910 /* BNRImageStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
