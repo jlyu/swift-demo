@@ -19,6 +19,7 @@ class ItemsViewController: UITableViewController,
         detailViewController.item = newItem
         detailViewController.tableViewDataReloadHandler = tableViewReloadCallBack
         var naviViewController: UINavigationController = UINavigationController(rootViewController: detailViewController)
+        naviViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.presentViewController(naviViewController, animated: true, completion: nil)
     }
 
