@@ -23,18 +23,27 @@ class DetailViewController: UIViewController,
         }
     }
     
+    func save() {
+        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func cancle() {
+        BNRItemStore.instance.removeItem(self.item!)
+        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     init(forNewItem isNew: Bool) {
         super.init(nibName: "DetailView", bundle: nil)
         if self != nil {
             if isNew {
                 var doneButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
                     target: self,
-                    action: "save:")
+                    action: Selector("save"))
                 self.navigationItem.rightBarButtonItem = doneButton
                 
                 var cancleButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel,
                     target: self,
-                    action: "cancle:")
+                    action: Selector("cancle"))
                 self.navigationItem.leftBarButtonItem = cancleButton
             }
         }
