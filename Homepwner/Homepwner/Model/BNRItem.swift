@@ -8,7 +8,8 @@
 
 import UIKit
 
-class BNRItem {
+class BNRItem: NSCoding {
+    
     var itemName: String = ""
     var valueInDollars: Int = 0
     var serialNumber: String = "0000"
@@ -36,6 +37,23 @@ class BNRItem {
         let randomSerialNumber = "0\(rA.randomItem())A\(rA.randomItem())"
         
         return BNRItem(itemName: randomName, valueInDollars: randomValue, serialNumber: randomSerialNumber)
+    }
+    
+    //Archiving
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encodeObject(itemName, forKey: "itemName")
+        aCoder.encodeInteger(valueInDollars, forKey: "valueInDollars")
+        aCoder.encodeObject(serialNumber, forKey: "serialNumber")
+        aCoder.encodeObject(dateCreated, forKey: "dateCreated")
+        aCoder.encodeObject(imageKey, forKey: "imageKey")
+    }
+    
+    init(coder aDecoder: NSCoder!) {
+        self.itemName = aDecoder.decodeObjectForKey("itemName") as String
+        self.valueInDollars = aDecoder.decodeIntegerForKey("valueInDollars") as Int
+        self.serialNumber = aDecoder.decodeObjectForKey("serialNumber") as String
+        self.dateCreated = aDecoder.decodeObjectForKey("dateCreated") as NSDate
+        self.imageKey = aDecoder.decodeObjectForKey("imageKey") as? String
     }
 }
 
