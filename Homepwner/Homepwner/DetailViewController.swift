@@ -23,15 +23,6 @@ class DetailViewController: UIViewController,
         }
     }
     
-    /*
-    init() {
-        super.init(nibName: "DetailView", bundle: NSBundle.mainBundle())
-    }
-    
-    convenience init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        self.init()
-    }
-    */
     @IBAction func takePicture(sender : AnyObject) {
         var imagePickerController: UIImagePickerController = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
@@ -43,6 +34,13 @@ class DetailViewController: UIViewController,
         
         //set modal view
         self.presentViewController(imagePickerController, animated: true, completion: nil)
+    }
+    
+    @IBAction func dropPicture(sender : AnyObject) {
+        if let currentKey = item!.imageKey {
+            BNRImageStore.instance.deleteImageForKey(currentKey)
+        }
+        self.imageView.image = nil
     }
     
     @IBAction func backgroundTapped(sender : AnyObject) {
@@ -99,7 +97,7 @@ class DetailViewController: UIViewController,
         item!.imageKey = key
         BNRImageStore.instance.setImage(image, forKey: key)
         
-        //CFRelease(newUniqueIDString) // TODO: why can't release ?
+        //CFRelease(newUniqueIDString) // Swift don't need manually call CFRelease anymore
         //CFRelease(newUniqueID)
         
         imageView.image = image
