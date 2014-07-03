@@ -17,6 +17,7 @@ class ItemsViewController: UITableViewController,
         var newItem: BNRItem = BNRItemStore.instance.createItem()
         var detailViewController: DetailViewController = DetailViewController(forNewItem: true)
         detailViewController.item = newItem
+        detailViewController.tableViewDataReloadHandler = tableViewReloadCallBack
         var naviViewController: UINavigationController = UINavigationController(rootViewController: detailViewController)
         self.presentViewController(naviViewController, animated: true, completion: nil)
     }
@@ -36,6 +37,10 @@ class ItemsViewController: UITableViewController,
         for i in 0..2 {
             BNRItemStore.instance.createItem()
         }
+    }
+    
+    func tableViewReloadCallBack() {
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {

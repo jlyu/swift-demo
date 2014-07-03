@@ -23,13 +23,15 @@ class DetailViewController: UIViewController,
         }
     }
     
+    var tableViewDataReloadHandler: ()-> Void = { }
+    
     func save() {
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController.dismissViewControllerAnimated(true, completion: tableViewDataReloadHandler)
     }
     
     func cancle() {
         BNRItemStore.instance.removeItem(self.item!)
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController.dismissViewControllerAnimated(true, completion: tableViewDataReloadHandler)
     }
     
     init(forNewItem isNew: Bool) {
