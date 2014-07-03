@@ -9,7 +9,7 @@
 import UIKit
 
 class DetailViewController: UIViewController,
-                            UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+                            UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet var nameField : UITextField
     @IBOutlet var serialNumberField : UITextField
@@ -43,6 +43,10 @@ class DetailViewController: UIViewController,
         
         //set modal view
         self.presentViewController(imagePickerController, animated: true, completion: nil)
+    }
+    
+    @IBAction func backgroundTapped(sender : AnyObject) {
+        self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
@@ -80,6 +84,11 @@ class DetailViewController: UIViewController,
     
     // conform UIImagePickerControllerDelegation
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!) {
+        
+        if let oldKey = item!.imageKey {
+            BNRImageStore.instance.deleteImageForKey(oldKey)
+        }
+        
         var image: UIImage  = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
         // since that has "Create" in the name, code is responsible for releasing the object.
@@ -96,5 +105,10 @@ class DetailViewController: UIViewController,
         imageView.image = image
         
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
