@@ -8,15 +8,17 @@
 
 import UIKit
 
-class ItemsViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
+class ItemsViewController: UITableViewController,
+                            UITableViewDelegate, UITableViewDataSource {
     
 
     @IBAction func addNewItem(sender : AnyObject) {
-        var newItem: BNRItem = BNRItemStore.instance.createItem()
-        var lastRow: Int = BNRItemStore.instance.allItems.indexOfObject(newItem)!
-        var ips: NSIndexPath = NSIndexPath(forRow: lastRow, inSection: 0)
         
-        self.tableView.insertRowsAtIndexPaths(NSArray(object:ips), withRowAnimation: UITableViewRowAnimation.Top)
+        var newItem: BNRItem = BNRItemStore.instance.createItem()
+        var detailViewController: DetailViewController = DetailViewController(forNewItem: true)
+        detailViewController.item = newItem
+        var naviViewController: UINavigationController = UINavigationController(rootViewController: detailViewController)
+        self.presentViewController(naviViewController, animated: true, completion: nil)
     }
 
     init() {
@@ -30,6 +32,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         self.navigationItem.rightBarButtonItem = barButtonItem
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
+        //TODO:
         for i in 0..2 {
             BNRItemStore.instance.createItem()
         }
@@ -41,12 +44,12 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        var detailView: DetailViewController = DetailViewController()
+        var detailViewController: DetailViewController = DetailViewController(forNewItem: false)
         
         var selectedItem: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
-        detailView.item = selectedItem
+        detailViewController.item = selectedItem
         
-        self.navigationController.pushViewController(detailView, animated: true)
+        self.navigationController.pushViewController(detailViewController, animated: true)
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {

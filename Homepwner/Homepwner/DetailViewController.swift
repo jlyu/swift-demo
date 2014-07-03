@@ -23,6 +23,23 @@ class DetailViewController: UIViewController,
         }
     }
     
+    init(forNewItem isNew: Bool) {
+        super.init(nibName: "DetailView", bundle: nil)
+        if self != nil {
+            if isNew {
+                var doneButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
+                    target: self,
+                    action: "save:")
+                self.navigationItem.rightBarButtonItem = doneButton
+                
+                var cancleButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel,
+                    target: self,
+                    action: "cancle:")
+                self.navigationItem.leftBarButtonItem = cancleButton
+            }
+        }
+    }
+    
     @IBAction func takePicture(sender : AnyObject) {
         var imagePickerController: UIImagePickerController = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
