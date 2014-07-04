@@ -59,4 +59,9 @@ class BNRItemStore: NSObject {
         var documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         return documentDirectories + "items.archive"
     }
+    
+    func saveChanges() -> Bool {
+        var path = self.itemArchivePath()
+        return NSKeyedArchiver.archiveRootObject(allItems, toFile: path)
+    }
 }

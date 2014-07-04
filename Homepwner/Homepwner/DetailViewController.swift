@@ -40,7 +40,7 @@ class DetailViewController: UIViewController,
             if isNew {
                 var doneButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done,
                     target: self,
-                    action: Selector("save"))
+                    action: "save")
                 self.navigationItem.rightBarButtonItem = doneButton
                 
                 var cancleButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel,
