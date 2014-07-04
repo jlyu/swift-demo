@@ -54,4 +54,9 @@ class BNRItemStore: NSObject {
         allItems.removeAtIndex(from)
         allItems.insert(fromItem, atIndex: to)
     }
+    
+    func itemArchivePath() -> String {
+        var documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        return documentDirectories + "items.archive"
+    }
 }
