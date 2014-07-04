@@ -8,13 +8,15 @@
 
 import UIKit
 
-class BNRItem: NSCoding {
+class BNRItem: NSObject, NSCoding {
     
     var itemName: String = ""
     var valueInDollars: Int = 0
-    var serialNumber: String = "0000"
+    var serialNumber: String = ""
     var dateCreated: NSDate = NSDate()
     var imageKey: String?
+    
+    init() { }
     
     init(itemName name: String, valueInDollars value: Int, serialNumber num: String) {
         self.itemName = name

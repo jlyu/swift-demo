@@ -34,10 +34,6 @@ class ItemsViewController: UITableViewController,
         self.navigationItem.rightBarButtonItem = barButtonItem
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
-        //TODO:
-        for i in 0..2 {
-            BNRItemStore.instance.createItem()
-        }
     }
     
     func tableViewReloadCallBack() {

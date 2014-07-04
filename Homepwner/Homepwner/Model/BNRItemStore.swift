@@ -23,18 +23,17 @@ class BNRItemStore: NSObject {
     
     init() {
         //assert(Static.instance == nil, "Singleton already initialized!")
+        super.init()
+        if loadChanges() {
+            println("All BNRItems loaded")
+        }
     }
     
     
     var allItems: Array<BNRItem> = []
-    
-    func allOfItems() -> Array<BNRItem> {
-        return allItems
-    }
-    
+        
     func createItem() -> BNRItem {
-        var item: BNRItem = BNRItem.randomItem()
-        //println(item.description())
+        var item: BNRItem = BNRItem() //.randomItem()
         allItems.append(item)
         return item
     }
@@ -57,11 +56,26 @@ class BNRItemStore: NSObject {
     
     func itemArchivePath() -> String {
         var documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        return documentDirectories + "items.archive"
+        return documentDirectories.stringByAppendingPathComponent("items.archive")
     }
     
     func saveChanges() -> Bool {
         var path = self.itemArchivePath()
-        return NSKeyedArchiver.archiveRootObject(allItems, toFile: path)
+        return NSKeyedArchiver.archiveRootObject(allItems as Array<BNRItem>, toFile: path) //note: must do explicit convert here
     }
+    
+    func loadChanges() -> Bool {
+        var path = self.itemArchivePath()
+        if let loadAllItems = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? Array<BNRItem> {
+            if loadAllItems.count == 0 {
+                return false
+            }
+            
+            allItems = loadAllItems
+            return true
+        }
+        return false
+    }
+    
+    
 }
