@@ -26,14 +26,38 @@ class BNRImageStore: NSObject {
     
     func setImage(img: UIImage, forKey key: String) {
         self.imageDict[key] = img
+        
+        var imagePath = imagePathForKey(key)
+        var imageData: NSData = UIImageJPEGRepresentation(img, 1.0)
+        if imageData.writeToFile(imagePath, atomically: true) {
+            println("Saved BNRItem ->image")
+        }
     }
     
     func imageForKey(key: String) -> UIImage? {
-        return self.imageDict[key]
+        //return self.imageDict[key]
+        var result = self.imageDict[key]
+        if result == nil {
+            result = UIImage(contentsOfFile: imagePathForKey(key))
+            
+            if result != nil {
+                setImage(result!, forKey: key)
+            } else {
+                println("Error: unable to find \(imagePathForKey(key))")
+            }
+        }
+        return result
     }
     
     func deleteImageForKey(key: String) {
         self.imageDict.removeValueForKey(key)
+        
+        var imagePath = imagePathForKey(key)
+        NSFileManager.defaultManager().removeItemAtPath(imagePath, error: nil)
     }
     
+    func imagePathForKey(key: String) -> String {
+        var documentDictories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        return documentDictories.stringByAppendingPathComponent(key)
+    }
 }

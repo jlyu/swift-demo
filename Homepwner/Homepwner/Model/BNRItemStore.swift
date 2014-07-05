@@ -39,6 +39,9 @@ class BNRItemStore: NSObject {
     }
     
     func removeItem(item: BNRItem) {
+        var key = item.imageKey
+        BNRImageStore.instance.deleteImageForKey(key!)
+        
         for i in 0..allItems.count {
             if item === allItems[i] {
                 allItems.removeAtIndex(i)
