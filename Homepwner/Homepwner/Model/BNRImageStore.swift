@@ -20,7 +20,11 @@ class BNRImageStore: NSObject {
         return Static.instance!
     }
     
-    init() { }
+    init() {
+        super.init()
+        var nc: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: "clearCache:", name: UIApplicationDidReceiveMemoryWarningNotification, object: nil)
+    }
 
     var imageDict: Dictionary<String, UIImage> = Dictionary()
     
@@ -59,5 +63,10 @@ class BNRImageStore: NSObject {
     func imagePathForKey(key: String) -> String {
         var documentDictories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         return documentDictories.stringByAppendingPathComponent(key)
+    }
+    
+    func clearCache(note: NSNotification) {
+        println("\(imageDict.count) out of the cache")
+        imageDict.removeAll(keepCapacity: true)
     }
 }

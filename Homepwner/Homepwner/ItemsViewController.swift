@@ -40,6 +40,14 @@ class ItemsViewController: UITableViewController,
         self.tableView.reloadData()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // MUST regist nib in viewDidLoad()
+        var nib: UINib = UINib(nibName: "HomepwnerItemCell", bundle: nil)
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "HomepwnerItemCell")
+    }
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.reloadData()
@@ -55,26 +63,35 @@ class ItemsViewController: UITableViewController,
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return BNRItemStore.instance.allItems.count + 1
+        return BNRItemStore.instance.allItems.count
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        
+        /*
         var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("UITableViewCell") as? UITableViewCell
         
         if !cell {
             cell = UITableViewCell(style: UITableViewCellStyle.Default,
                                     reuseIdentifier: "UITableViewCell")
         }
+        */
         
+        var p: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
+        var cell: HomepwnerItemCell = tableView.dequeueReusableCellWithIdentifier("HomepwnerItemCell") as HomepwnerItemCell
+        
+        cell.nameLabel.text = p.itemName
+        cell.serialNumberLabel.text = p.serialNumber
+        cell.valueLabel.text = String(p.valueInDollars)
+        
+        /*
         if indexPath.row == BNRItemStore.instance.allItems.count {
             cell!.textLabel.text = "No more items !"
         } else {
             var item: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
             cell!.textLabel.text = item.description()
         }
-        
-        return cell!
+        */
+        return cell
     }
     
     override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
