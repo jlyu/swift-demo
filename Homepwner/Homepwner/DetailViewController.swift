@@ -117,7 +117,7 @@ class DetailViewController: UIViewController,
         
         var image: UIImage  = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         
-        // since that has "Create" in the name, code is responsible for releasing the object.
+        // since that has "Create" in the name, code is responsible for releasing the object. (no any more in Swift)
         var newUniqueID: CFUUIDRef = CFUUIDCreate(kCFAllocatorDefault)
         var newUniqueIDString: CFStringRef = CFUUIDCreateString(kCFAllocatorDefault, newUniqueID)
         
@@ -125,10 +125,13 @@ class DetailViewController: UIViewController,
         item!.imageKey = key
         BNRImageStore.instance.setImage(image, forKey: key)
         
+        item!.setThumbnailDataFromImage(image)
+        
         //CFRelease(newUniqueIDString) // Swift don't need manually call CFRelease anymore
         //CFRelease(newUniqueID)
         
         imageView.image = image
+        
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

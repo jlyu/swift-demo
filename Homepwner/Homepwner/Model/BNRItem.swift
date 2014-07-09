@@ -17,7 +17,7 @@ class BNRItem: NSObject, NSCoding {
     var imageKey: String?
     var thumbnailData: NSData?
     var thumbnail: UIImage? {
-        didSet {
+        willSet {
             if !thumbnailData { self.thumbnail = nil }
             if !self.thumbnail { self.thumbnail = UIImage(data: thumbnailData) }
         }
@@ -31,10 +31,10 @@ class BNRItem: NSObject, NSCoding {
         self.serialNumber = num
         self.dateCreated = NSDate()
         
-        // init thumbnail. without using getter / setter
-        // Wrong.
+        //if !self.thumbnailData { self.thumbnail = nil }
+        //if !self.thumbnail { self.thumbnail = UIImage(data: self.thumbnailData) }
     }
-        
+    
     func description() -> String! {
         var description: String = "\(self.itemName) (\(self.serialNumber)): $\(self.valueInDollars)@\(self.dateCreated)"
         return description
@@ -51,6 +51,29 @@ class BNRItem: NSObject, NSCoding {
         return BNRItem(itemName: randomName, valueInDollars: randomValue, serialNumber: randomSerialNumber)
     }
     
+    func setThumbnailDataFromImage(image: UIImage) {
+        var origImageSize = image.size
+        let newRect: CGRect = CGRectMake(0.0, 0.0, 40.0, 40.0)
+        let ratio = max(newRect.size.width / origImageSize.width,
+                                newRect.size.height / origImageSize.height)
+        UIGraphicsBeginImageContextWithOptions(newRect.size, false, 0.0)
+        var path: UIBezierPath = UIBezierPath(roundedRect: newRect, cornerRadius: 5.0)
+        path.addClip()
+        
+        var projectRect = CGRect()
+        projectRect.size.width = ratio * origImageSize.width
+        projectRect.size.height = ratio * origImageSize.height
+        projectRect.origin.x = (newRect.size.width - projectRect.size.width) / 2.0
+        projectRect.origin.y = (newRect.size.height - projectRect.size.height) / 2.0
+        image.drawInRect(projectRect)
+        
+        let smallImage = UIGraphicsGetImageFromCurrentImageContext()
+        self.thumbnailData = UIImagePNGRepresentation(smallImage) //assign thumbnialData before thumbnail
+        self.thumbnail = smallImage
+        
+        UIGraphicsEndImageContext()
+    }
+    
     //Archiving
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(itemName, forKey: "itemName")
@@ -58,6 +81,7 @@ class BNRItem: NSObject, NSCoding {
         aCoder.encodeObject(serialNumber, forKey: "serialNumber")
         aCoder.encodeObject(dateCreated, forKey: "dateCreated")
         aCoder.encodeObject(imageKey, forKey: "imageKey")
+        aCoder.encodeObject(thumbnailData, forKey: "thumbnailData")
     }
     
     init(coder aDecoder: NSCoder!) {
@@ -66,6 +90,7 @@ class BNRItem: NSObject, NSCoding {
         self.serialNumber = aDecoder.decodeObjectForKey("serialNumber") as String
         self.dateCreated = aDecoder.decodeObjectForKey("dateCreated") as NSDate
         self.imageKey = aDecoder.decodeObjectForKey("imageKey") as? String
+        self.thumbnailData = aDecoder.decodeObjectForKey("thumbnailData") as? NSData
     }
 }
 

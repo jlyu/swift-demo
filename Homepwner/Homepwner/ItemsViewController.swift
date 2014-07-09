@@ -74,6 +74,7 @@ class ItemsViewController: UITableViewController,
         cell.nameLabel.text = p.itemName
         cell.serialNumberLabel.text = p.serialNumber
         cell.valueLabel.text = String(p.valueInDollars)
+        cell.thumbnailView.image = p.thumbnail
         
         return cell
     }
