@@ -70,6 +70,8 @@ class ItemsViewController: UITableViewController,
         
         var p: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
         var cell: HomepwnerItemCell = tableView.dequeueReusableCellWithIdentifier("HomepwnerItemCell") as HomepwnerItemCell
+        cell.controller = self
+        cell.tableView = tableView
         
         cell.nameLabel.text = p.itemName
         cell.serialNumberLabel.text = p.serialNumber
@@ -102,6 +104,10 @@ class ItemsViewController: UITableViewController,
 
     override func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String! {
         return "删除"
+    }
+    
+    func showImage(sender : AnyObject, atIndexPath ip: NSIndexPath) {
+        println("going to show the image for \(ip)")
     }
 
 }
