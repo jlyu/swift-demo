@@ -67,14 +67,6 @@ class ItemsViewController: UITableViewController,
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        /*
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("UITableViewCell") as? UITableViewCell
-        
-        if !cell {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default,
-                                    reuseIdentifier: "UITableViewCell")
-        }
-        */
         
         var p: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
         var cell: HomepwnerItemCell = tableView.dequeueReusableCellWithIdentifier("HomepwnerItemCell") as HomepwnerItemCell
@@ -83,14 +75,6 @@ class ItemsViewController: UITableViewController,
         cell.serialNumberLabel.text = p.serialNumber
         cell.valueLabel.text = String(p.valueInDollars)
         
-        /*
-        if indexPath.row == BNRItemStore.instance.allItems.count {
-            cell!.textLabel.text = "No more items !"
-        } else {
-            var item: BNRItem = BNRItemStore.instance.allItems[indexPath.row]
-            cell!.textLabel.text = item.description()
-        }
-        */
         return cell
     }
     
