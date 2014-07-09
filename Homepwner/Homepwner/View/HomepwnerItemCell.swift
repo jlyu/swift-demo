@@ -19,8 +19,11 @@ class HomepwnerItemCell: UITableViewCell {
     var tableView: UITableView!
     
     @IBAction func showImage(sender : AnyObject) {
-        self.image = nil
+        
         var indexPath: NSIndexPath = self.tableView.indexPathForCell(self)
         self.controller.showImage(sender, atIndexPath: indexPath)
+
     }
+    
+    
 }
