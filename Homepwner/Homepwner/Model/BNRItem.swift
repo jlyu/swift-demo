@@ -15,6 +15,13 @@ class BNRItem: NSObject, NSCoding {
     var serialNumber: String = ""
     var dateCreated: NSDate = NSDate()
     var imageKey: String?
+    var thumbnailData: NSData?
+    var thumbnail: UIImage? {
+        didSet {
+            if !thumbnailData { self.thumbnail = nil }
+            if !self.thumbnail { self.thumbnail = UIImage(data: thumbnailData) }
+        }
+    }
     
     init() { }
     
@@ -23,6 +30,9 @@ class BNRItem: NSObject, NSCoding {
         self.valueInDollars = value
         self.serialNumber = num
         self.dateCreated = NSDate()
+        
+        // init thumbnail. without using getter / setter
+        // Wrong.
     }
         
     func description() -> String! {
