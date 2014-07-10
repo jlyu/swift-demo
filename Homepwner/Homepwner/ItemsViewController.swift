@@ -11,6 +11,8 @@ import UIKit
 class ItemsViewController: UITableViewController,
                             UITableViewDelegate, UITableViewDataSource {
     
+    var imagePopover: UIPopoverController!
+    
 
     @IBAction func addNewItem(sender : AnyObject) {
         
@@ -103,11 +105,33 @@ class ItemsViewController: UITableViewController,
     }
 
     override func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String! {
-        return "删除"
+        return "DEL"
     }
     
     func showImage(sender : AnyObject, atIndexPath ip: NSIndexPath) {
-        println("going to show the image for \(ip)")
+        //println("going to show the image for \(ip)")
+        var item: BNRItem = BNRItemStore.instance.allItems[ip.row]
+        if let image = BNRImageStore.instance.imageDict[item.imageKey!] {
+            var thumbImageViewController: ThumbImageViewController = ThumbImageViewController(nibName: "ThumbImageView",
+                                                                                                bundle: nil) //
+            thumbImageViewController.image = image
+            
+            var naviViewController: UINavigationController = UINavigationController(rootViewController: thumbImageViewController)
+            naviViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+            self.presentViewController(naviViewController, animated: true, completion: nil)
+            
+            /*
+            
+            var rect: CGRect = self.view.convertRect(sender.bounds, fromView: sender as UIView)
+            
+            imagePopover = UIPopoverController(contentViewController: ivc)
+            imagePopover.delegate = self
+            imagePopover.popoverContentSize = CGSizeMake(600, 600)
+            imagePopover.presentPopoverFromRect(rect, inView: self.view,
+                                                permittedArrowDirections: UIPopoverArrowDirection.Any,
+                                                animated: true)
+            */
+        }
     }
-
+    
 }
