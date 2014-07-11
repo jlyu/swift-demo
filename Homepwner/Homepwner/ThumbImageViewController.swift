@@ -15,6 +15,22 @@ class ThumbImageViewController: UIViewController {
     
     var image: UIImage?
     
+    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nil, bundle: nibBundleOrNil)
+        
+        var tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self.view, action: Selector("tap"))
+        self.view?.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func tap(gr: UIGestureRecognizer) {
+        println("tapped")
+        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+        println("touches Began")
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
