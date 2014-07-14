@@ -18,7 +18,8 @@ class ThumbImageViewController: UIViewController {
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nil, bundle: nibBundleOrNil)
         
-        var tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self.view, action: Selector("tap"))
+        var tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self.view,
+                                                                            action: Selector("tap:"))
         self.view?.addGestureRecognizer(tapRecognizer)
     }
     

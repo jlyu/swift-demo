@@ -39,7 +39,7 @@ class BNRImageStore: NSObject {
     }
     
     func imageForKey(key: String) -> UIImage? {
-        //return self.imageDict[key]
+        
         var result = self.imageDict[key]
         if result == nil {
             result = UIImage(contentsOfFile: imagePathForKey(key))

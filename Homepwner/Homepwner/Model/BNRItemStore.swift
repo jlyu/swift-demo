@@ -50,6 +50,10 @@ class BNRItemStore: NSObject {
         }
     }
     
+    func dropThumbnailImageFromKey(key: String) {
+        
+    }
+    
     func moveItemAtIndex(from: Int, toIndex to: Int) {
         if from == to { return }
         var fromItem: BNRItem = BNRItemStore.instance.allItems.objectAtIndex(from) as BNRItem

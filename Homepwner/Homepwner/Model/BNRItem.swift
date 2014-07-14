@@ -15,7 +15,12 @@ class BNRItem: NSObject, NSCoding {
     var serialNumber: String = ""
     var dateCreated: NSDate = NSDate()
     var imageKey: String?
-    var thumbnailData: NSData?
+    var thumbnailData: NSData? /* {
+        didSet {
+            if !thumbnailData { self.thumbnail = nil }
+            if !self.thumbnail { self.thumbnail = UIImage(data: thumbnailData) }
+        }
+    } */
     var thumbnail: UIImage? {
         willSet {
             if !thumbnailData { self.thumbnail = nil }
@@ -32,7 +37,7 @@ class BNRItem: NSObject, NSCoding {
         self.dateCreated = NSDate()
         
         //if !self.thumbnailData { self.thumbnail = nil }
-        //if !self.thumbnail { self.thumbnail = UIImage(data: self.thumbnailData) }
+        if !self.thumbnail { self.thumbnail = UIImage(data: self.thumbnailData) }
     }
     
     func description() -> String! {
@@ -50,7 +55,7 @@ class BNRItem: NSObject, NSCoding {
         
         return BNRItem(itemName: randomName, valueInDollars: randomValue, serialNumber: randomSerialNumber)
     }
-    
+        
     func setThumbnailDataFromImage(image: UIImage) {
         var origImageSize = image.size
         let newRect: CGRect = CGRectMake(0.0, 0.0, 40.0, 40.0)
@@ -91,6 +96,10 @@ class BNRItem: NSObject, NSCoding {
         self.dateCreated = aDecoder.decodeObjectForKey("dateCreated") as NSDate
         self.imageKey = aDecoder.decodeObjectForKey("imageKey") as? String
         self.thumbnailData = aDecoder.decodeObjectForKey("thumbnailData") as? NSData
+        
+        if self.thumbnailData {
+            self.thumbnail = UIImage(data: thumbnailData)
+        }
     }
 }
 
