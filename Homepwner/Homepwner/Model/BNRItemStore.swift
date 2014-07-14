@@ -50,8 +50,14 @@ class BNRItemStore: NSObject {
         }
     }
     
-    func dropThumbnailImageFromKey(key: String) {
-        
+    func deleteThumbnailImageForKey(key: String) {
+        for i in 0..allItems.count {
+            if allItems[i].imageKey == key {
+                allItems[i].thumbnailData = nil
+                allItems[i].thumbnail = nil
+                return
+            }
+        }
     }
     
     func moveItemAtIndex(from: Int, toIndex to: Int) {

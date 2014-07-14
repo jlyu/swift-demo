@@ -67,6 +67,7 @@ class DetailViewController: UIViewController,
     @IBAction func dropPicture(sender : AnyObject) {
         if let currentKey = item!.imageKey {
             BNRImageStore.instance.deleteImageForKey(currentKey)
+            BNRItemStore.instance.deleteThumbnailImageForKey(currentKey)
         }
         self.imageView.image = nil
     }
