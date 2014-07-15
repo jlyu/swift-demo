@@ -9,10 +9,11 @@
 import UIKit
 
 class ListViewController: UITableViewController,
-                            UIAlertViewDelegate{
+                            NSXMLParserDelegate{
     
     var connection: NSURLConnection?
-    var xmlData: NSMutableData = NSMutableData()
+    var xmlData: NSMutableData? = NSMutableData()
+    var channel: RSSChannel = RSSChannel()
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nil, bundle: nil)
@@ -20,7 +21,6 @@ class ListViewController: UITableViewController,
             self.fetchEntries()
         }
     }
-    
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return 0
@@ -32,31 +32,52 @@ class ListViewController: UITableViewController,
     }
     
     func fetchEntries() {
-        //xmlData = NSMutableData()
-        
         let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")
-        
         let reqest = NSURLRequest(URL: requestURL)
         self.connection = NSURLConnection(request: reqest, delegate: self, startImmediately: true)
     }
     
     // Get XML Data
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
-        xmlData.appendData(data)
+        xmlData!.appendData(data)
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
-        var xmlCheck = NSString(data: xmlData, encoding: NSUTF8StringEncoding)
-        println("xmlCheck = \(xmlCheck)")
+        //var xmlCheck = NSString(data: xmlData, encoding: NSUTF8StringEncoding)
+        //println("xmlCheck = \(xmlCheck)")
+        
+        let parser = NSXMLParser(data: xmlData)
+        parser.delegate = self
+        parser.parse() // blocking..
+        self.xmlData = nil
+        self.connection = nil
+        self.tableView.reloadData()
+        
+        println("\(channel) -> \(channel.title) -> \(channel.infoString)")
     }
     
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
         self.connection = nil
-        //self.xmlData
+        self.xmlData = nil
         var errorString = "Fetch failed: \(error.localizedDescription)"
         var alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // Conform NSXMLParserDelegate
+    func parser(parser: NSXMLParser!,
+        didStartElement elementName: String!,
+        namespaceURI: String!,
+        qualifiedName qName: String!,
+        attributes attributeDict: NSDictionary!) {
+            
+            println("\(self) found \(elementName)")
+            if elementName == "channel" {
+                self.channel.parentParserDelegate = self
+                parser.delegate = channel
+            }
+        
     }
 
 }

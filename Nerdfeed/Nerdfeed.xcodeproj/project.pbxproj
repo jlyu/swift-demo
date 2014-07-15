@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360D5D20197581C10027D162 /* RSSChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360D5D1F197581C10027D162 /* RSSChannel.swift */; };
 		362B302319740EBD005DA6F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B302219740EBD005DA6F8 /* AppDelegate.swift */; };
 		362B302519740EBD005DA6F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B302419740EBD005DA6F8 /* ViewController.swift */; };
 		362B302819740EBD005DA6F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362B302619740EBD005DA6F8 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		360D5D1F197581C10027D162 /* RSSChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSChannel.swift; sourceTree = "<group>"; };
 		362B301D19740EBD005DA6F8 /* Nerdfeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerdfeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		362B302119740EBD005DA6F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		362B302219740EBD005DA6F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				362B302919740EBD005DA6F8 /* Images.xcassets */,
 				362B302019740EBD005DA6F8 /* Supporting Files */,
 				362B303F19740F0E005DA6F8 /* ListViewController.swift */,
+				360D5D1F197581C10027D162 /* RSSChannel.swift */,
 			);
 			path = Nerdfeed;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				360D5D20197581C10027D162 /* RSSChannel.swift in Sources */,
 				362B302519740EBD005DA6F8 /* ViewController.swift in Sources */,
 				362B302319740EBD005DA6F8 /* AppDelegate.swift in Sources */,
 				362B304019740F0E005DA6F8 /* ListViewController.swift in Sources */,
@@ -407,6 +411,7 @@
 				362B303B19740EBD005DA6F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		362B303C19740EBD005DA6F8 /* Build configuration list for PBXNativeTarget "NerdfeedTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				362B303E19740EBD005DA6F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
