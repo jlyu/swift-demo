@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
-        var listViewController = ListViewController(style: UITableViewStyle.Plain)
+        var listViewController = ListViewController(nibName: nil, bundle: nil)
         var masterNaviController = UINavigationController(rootViewController: listViewController)
         self.window!.rootViewController = masterNaviController
         return true
