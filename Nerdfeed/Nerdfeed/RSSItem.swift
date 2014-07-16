@@ -1,28 +1,21 @@
 //
-//  RSSChannel.swift
+//  RSSItem.swift
 //  Nerdfeed
 //
-//  Created by chain on 14-7-15.
+//  Created by chain on 14-7-16.
 //  Copyright (c) 2014 chain. All rights reserved.
 //
 
 import UIKit
 
 
-class RSSChannel: NSObject,
-                  NSXMLParserDelegate {
+class RSSItem: NSObject,
+                NSXMLParserDelegate {
     
-    var parentParserDelegate: ListViewController?
+    var currentString: NSString?
+    var parentParserDelegate: RSSChannel?
     var title: String = ""
-    var infoString: String = ""
-    var items: Array<RSSItem> = Array()
-    
-    var currentString: String?
-    
-    init() {
-        super.init()
-    }
-    
+    var link: String = ""
     
     // Conform NSXMLParserDelegate
     func parser(parser: NSXMLParser!,
@@ -33,17 +26,12 @@ class RSSChannel: NSObject,
             
             println("\(self) found \(elementName)")
             
-            //currentString = String()
+            currentString = NSMutableString()
             
             if elementName == "title" {
                 self.title = currentString!
             } else if elementName == "description" {
-                self.infoString = currentString!
-            } else if elementName == "item" {
-                var entry = RSSItem()
-                entry.parentParserDelegate = self
-                parser.delegate = entry
-                items.append(entry)
+                self.link = currentString!
             }
             
     }
@@ -53,15 +41,14 @@ class RSSChannel: NSObject,
         println("foundCharacter: \(string)")
         
         
-            if currentString {
-                currentString = currentString! + string
-            } else {
-                currentString = string
-            }
-        
-        
+        if currentString {
+            currentString = currentString! + string
+        } else {
+            currentString = string
+        }
         
     }
+    
     
     func parser(parser: NSXMLParser!,
         didEndElement elementName: String!,
@@ -70,12 +57,10 @@ class RSSChannel: NSObject,
             
             currentString = nil
             
-            if elementName == "channel" {
+            if elementName == "item" {
                 parser.delegate = parentParserDelegate!
             }
     }
     
     
-
-
 }

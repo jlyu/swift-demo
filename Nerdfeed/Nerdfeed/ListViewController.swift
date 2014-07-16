@@ -13,7 +13,7 @@ class ListViewController: UITableViewController,
     
     var connection: NSURLConnection?
     var xmlData: NSMutableData? = NSMutableData()
-    var channel: RSSChannel = RSSChannel()
+    var channel: RSSChannel?
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nil, bundle: nil)
@@ -53,7 +53,7 @@ class ListViewController: UITableViewController,
         self.connection = nil
         self.tableView.reloadData()
         
-        println("\(channel) -> \(channel.title) -> \(channel.infoString)")
+        println("\(channel) -> \(channel?.title) -> \(channel?.infoString)")
     }
     
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
@@ -72,10 +72,13 @@ class ListViewController: UITableViewController,
         qualifiedName qName: String!,
         attributes attributeDict: NSDictionary!) {
             
+            
+            
             println("\(self) found \(elementName)")
             if elementName == "channel" {
-                self.channel.parentParserDelegate = self
-                parser.delegate = channel
+                channel = RSSChannel()
+                self.channel!.parentParserDelegate = self
+                parser.delegate = channel!
             }
         
     }
