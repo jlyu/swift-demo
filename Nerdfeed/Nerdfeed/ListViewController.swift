@@ -23,12 +23,30 @@ class ListViewController: UITableViewController,
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        if channel {
+            return channel!.items.count
+        }
         return 0
     }
     
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        return nil
+       
+        // TODO: why?
+        //var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell") as UITableViewCell
+       
+        //if cell != nil {
+          var  cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "UITableViewCell")
+        //}
+
+        
+        if channel {
+            
+            var item: RSSItem = channel!.items[indexPath.row]
+            cell.textLabel.text = item.title
+        }
+        
+        return cell
     }
     
     func fetchEntries() {
@@ -53,7 +71,7 @@ class ListViewController: UITableViewController,
         self.connection = nil
         self.tableView.reloadData()
         
-        println("\(channel) -> \(channel?.title) -> \(channel?.infoString)")
+        println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
     }
     
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
@@ -72,9 +90,8 @@ class ListViewController: UITableViewController,
         qualifiedName qName: String!,
         attributes attributeDict: NSDictionary!) {
             
-            
-            
             println("\(self) found \(elementName)")
+            
             if elementName == "channel" {
                 channel = RSSChannel()
                 self.channel!.parentParserDelegate = self

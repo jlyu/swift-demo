@@ -13,16 +13,22 @@ class RSSChannel: NSObject,
                   NSXMLParserDelegate {
     
     var parentParserDelegate: ListViewController?
-    var title: String = ""
-    var infoString: String = ""
+    var title: String = String()
+    var infoString: String = String()
     var items: Array<RSSItem> = Array()
     
-    var currentString: String?
+    var currentString: String = String()
     
     init() {
         super.init()
     }
     
+    var parseTag: String!
+    
+    let titleTag = "title"
+    let descriptionTag = "description"
+    let itemTag = "item"
+    let channelTag = "channel"
     
     // Conform NSXMLParserDelegate
     func parser(parser: NSXMLParser!,
@@ -33,13 +39,11 @@ class RSSChannel: NSObject,
             
             println("\(self) found \(elementName)")
             
-            //currentString = String()
-            
-            if elementName == "title" {
-                self.title = currentString!
-            } else if elementName == "description" {
-                self.infoString = currentString!
-            } else if elementName == "item" {
+            if elementName == titleTag {
+                parseTag = elementName
+            } else if elementName == descriptionTag {
+                parseTag = elementName
+            } else if elementName == itemTag {
                 var entry = RSSItem()
                 entry.parentParserDelegate = self
                 parser.delegate = entry
@@ -52,14 +56,11 @@ class RSSChannel: NSObject,
         
         println("foundCharacter: \(string)")
         
-        
-            if currentString {
-                currentString = currentString! + string
-            } else {
-                currentString = string
-            }
-        
-        
+        if parseTag? == titleTag {
+            self.title = string
+        } else if parseTag? == descriptionTag {
+            self.infoString = string
+        }
         
     }
     
@@ -68,9 +69,9 @@ class RSSChannel: NSObject,
         namespaceURI: String!,
         qualifiedName qName: String!) {
             
-            currentString = nil
+            parseTag = nil
             
-            if elementName == "channel" {
+            if elementName == channelTag {
                 parser.delegate = parentParserDelegate!
             }
     }

@@ -12,10 +12,21 @@ import UIKit
 class RSSItem: NSObject,
                 NSXMLParserDelegate {
     
-    var currentString: NSString?
     var parentParserDelegate: RSSChannel?
-    var title: String = ""
-    var link: String = ""
+    var title: String = String()
+    var link: String = String()
+    
+    init()  {
+        super.init()
+    }
+    
+    
+    var parseTag: String!
+    
+    let titleTag = "title"
+    let linkTag = "link"
+    let itemTag = "item"
+
     
     // Conform NSXMLParserDelegate
     func parser(parser: NSXMLParser!,
@@ -26,12 +37,11 @@ class RSSItem: NSObject,
             
             println("\(self) found \(elementName)")
             
-            currentString = NSMutableString()
             
-            if elementName == "title" {
-                self.title = currentString!
-            } else if elementName == "description" {
-                self.link = currentString!
+            if elementName == titleTag {
+                parseTag = elementName
+            } else if elementName == linkTag {
+                parseTag = elementName
             }
             
     }
@@ -40,11 +50,10 @@ class RSSItem: NSObject,
         
         println("foundCharacter: \(string)")
         
-        
-        if currentString {
-            currentString = currentString! + string
-        } else {
-            currentString = string
+        if parseTag? == titleTag {
+            self.title = string
+        } else if parseTag? == linkTag {
+            self.link = string
         }
         
     }
@@ -55,9 +64,9 @@ class RSSItem: NSObject,
         namespaceURI: String!,
         qualifiedName qName: String!) {
             
-            currentString = nil
+            parseTag = nil
             
-            if elementName == "item" {
+            if elementName == itemTag {
                 parser.delegate = parentParserDelegate!
             }
     }
