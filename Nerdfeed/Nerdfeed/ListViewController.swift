@@ -15,6 +15,8 @@ class ListViewController: UITableViewController,
     var xmlData: NSMutableData? = NSMutableData()
     var channel: RSSChannel?
     
+    var webViewController: WebViewController!
+    
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nil, bundle: nil)
         if self != nil {
@@ -48,6 +50,20 @@ class ListViewController: UITableViewController,
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        
+        self.navigationController.pushViewController(webViewController, animated: true)
+        var entry: RSSItem = channel!.items[indexPath.row]
+        
+        let url: NSURL = NSURL(string: entry.link)
+        let request: NSURLRequest = NSURLRequest(URL: url)
+        
+        webViewController.webView.loadRequest(request)
+        webViewController.navigationItem.title = entry.title
+    }
+    
+    
     
     func fetchEntries() {
         let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")

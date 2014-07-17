@@ -51,9 +51,9 @@ class RSSItem: NSObject,
         println("foundCharacter: \(string)")
         
         if parseTag? == titleTag {
-            self.title = string
+            self.title += string
         } else if parseTag? == linkTag {
-            self.link = string
+            self.link += string
         }
         
     }
