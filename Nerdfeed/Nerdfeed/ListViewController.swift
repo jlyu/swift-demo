@@ -11,6 +11,9 @@ import UIKit
 class ListViewController: UITableViewController,
                             NSXMLParserDelegate{
     
+    // - Properties
+    
+    
     var connection: NSURLConnection?
     var xmlData: NSMutableData? = NSMutableData()
     var channel: RSSChannel?
@@ -24,6 +27,21 @@ class ListViewController: UITableViewController,
         }
     }
     
+    
+    // - View
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var xib: UINib = UINib(nibName: "RSSItemCell", bundle: nil)
+        self.tableView.registerNib(xib, forCellReuseIdentifier: "RSSItemCell")
+    }
+    
+    
+    // - UITableView DataSource
+    
+    
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         if channel {
             return channel!.items.count
@@ -33,21 +51,15 @@ class ListViewController: UITableViewController,
     
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-       
-        // TODO: why?
-        //var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell") as UITableViewCell
-       
-        //if cell != nil {
-          var  cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "UITableViewCell")
-        //}
-
         
-        if channel {
+        var cell: RSSItemCell = tableView.dequeueReusableCellWithIdentifier("RSSItemCell") as RSSItemCell
+        cell.controller = self
             
-            var item: RSSItem = channel!.items[indexPath.row]
-            cell.textLabel.text = item.title
-        }
-        
+        var item: RSSItem = channel!.items[indexPath.row]
+            
+        cell.authorLabel.text = item.title
+        cell.titleLabel.text = item.link
+        cell.catagoryLabel.text = "Programming"
         return cell
     }
     
@@ -71,7 +83,10 @@ class ListViewController: UITableViewController,
         self.connection = NSURLConnection(request: reqest, delegate: self, startImmediately: true)
     }
     
-    // Get XML Data
+    
+    // - XML Data
+    
+    
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
         xmlData!.appendData(data)
     }
@@ -99,7 +114,10 @@ class ListViewController: UITableViewController,
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    // Conform NSXMLParserDelegate
+    
+    // - NSXMLParserDelegate
+    
+    
     func parser(parser: NSXMLParser!,
         didStartElement elementName: String!,
         namespaceURI: String!,

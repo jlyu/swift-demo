@@ -21,8 +21,8 @@ class WebViewController: UIViewController {
         super.loadView()
         self.view.addSubview(self.webView)
 
-        self.webView.frame = self.view.bounds //UIScreen.mainScreen().applicationFrame
-        //self.webView.scalesPageToFit = true
+        self.webView.frame = UIScreen.mainScreen().applicationFrame
+        self.webView.scalesPageToFit = true
         
     }
     
