@@ -75,16 +75,19 @@ class ListViewController: UITableViewController,
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
-        if self.splitViewController != nil {
+        if self.splitViewController == nil {
+            
             self.navigationController.pushViewController(webViewController, animated: true)
-            var entry: RSSItem = channel!.items[indexPath.row]
-        
-            let url: NSURL = NSURL(string: entry.link)
-            let request: NSURLRequest = NSURLRequest(URL: url)
-        
-            webViewController.webView.loadRequest(request)
-            webViewController.navigationItem.title = entry.title
         }
+        
+        var entry: RSSItem = channel!.items[indexPath.row]
+        
+        let url: NSURL = NSURL(string: entry.link)
+        let request: NSURLRequest = NSURLRequest(URL: url)
+        
+        webViewController.webView.loadRequest(request)
+        webViewController.navigationItem.title = entry.title
+        
     }
     
     

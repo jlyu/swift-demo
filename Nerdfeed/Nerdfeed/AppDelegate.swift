@@ -23,11 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if deviceIsPad() {
             var detailNaviController = UINavigationController(rootViewController: webViewController)
-            var viewControllers = [masterNaviController, detailNaviController]
             
-            var splitViewController = UISplitViewController() //nibName: nil, bundle: nil)
+            var splitViewController = UISplitViewController(nibName: nil, bundle: nil)
             splitViewController.delegate = webViewController
-            splitViewController.viewControllers = viewControllers
+            splitViewController.viewControllers = [masterNaviController, detailNaviController]
             
             self.window!.rootViewController = splitViewController
         } else {
