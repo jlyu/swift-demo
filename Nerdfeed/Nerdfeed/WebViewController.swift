@@ -8,7 +8,8 @@
 
 import UIKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController,
+                         UISplitViewControllerDelegate {
     
     var webView: UIWebView = UIWebView()
     
