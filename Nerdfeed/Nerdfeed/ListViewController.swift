@@ -82,12 +82,13 @@ class ListViewController: UITableViewController,
         
         var entry: RSSItem = channel!.items[indexPath.row]
         
-        let url: NSURL = NSURL(string: entry.link)
-        let request: NSURLRequest = NSURLRequest(URL: url)
+        //let url: NSURL = NSURL(string: entry.link)
+        //let request: NSURLRequest = NSURLRequest(URL: url)
         
-        webViewController.webView.loadRequest(request)
-        webViewController.navigationItem.title = entry.title
+        //webViewController.webView.loadRequest(request)
+        //webViewController.navigationItem.title = entry.title
         
+        webViewController.listViewController(self, handleObject: entry)
     }
     
     
@@ -139,7 +140,7 @@ class ListViewController: UITableViewController,
         qualifiedName qName: String!,
         attributes attributeDict: NSDictionary!) {
             
-            println("\(self) found \(elementName)")
+            //println("\(self) found \(elementName)")
             
             if elementName == "channel" {
                 channel = RSSChannel()
@@ -148,5 +149,11 @@ class ListViewController: UITableViewController,
             }
         
     }
+}
 
+
+// - Protocol
+protocol ListViewControllerDelegate {
+    
+    func listViewController(lvc: ListViewController, handleObject object: AnyObject)
 }

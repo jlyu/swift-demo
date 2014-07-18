@@ -9,7 +9,7 @@
 import UIKit
 
 class WebViewController: UIViewController,
-                         UISplitViewControllerDelegate {
+                         UISplitViewControllerDelegate, ListViewControllerDelegate {
     
     
     // - Property
@@ -42,6 +42,27 @@ class WebViewController: UIViewController,
             return toInterfaceOrientation == UIInterfaceOrientation.Portrait
         }
     }
+    
+    
+    //  - Protocol
+    
+    
+    func listViewController(lvc: ListViewController, handleObject object: AnyObject) {
+        var entry: RSSItem = object as RSSItem
+        
+        if (!entry.isKindOfClass(RSSItem.self)) {
+            return
+        }
+        
+        let url = NSURL(string: entry.link)
+        let request = NSURLRequest(URL: url)
+        self.webView.loadRequest(request)
+        
+        self.navigationItem.title = entry.title
+    }
+    
+    
+    
     
 }
 
