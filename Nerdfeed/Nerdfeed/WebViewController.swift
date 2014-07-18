@@ -48,11 +48,12 @@ class WebViewController: UIViewController,
     
     
     func listViewController(lvc: ListViewController, handleObject object: AnyObject) {
-        var entry: RSSItem = object as RSSItem
         
-        if (!entry.isKindOfClass(RSSItem.self)) {
+        if (!object.isKindOfClass(RSSItem.self)) {
             return
         }
+        
+        var entry: RSSItem = object as RSSItem
         
         let url = NSURL(string: entry.link)
         let request = NSURLRequest(URL: url)
@@ -60,9 +61,6 @@ class WebViewController: UIViewController,
         
         self.navigationItem.title = entry.title
     }
-    
-    
-    
     
 }
 
