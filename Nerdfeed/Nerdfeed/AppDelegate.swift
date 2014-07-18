@@ -24,16 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if deviceIsPad() {
             var detailNaviController = UINavigationController(rootViewController: webViewController)
             var viewControllers = [masterNaviController, detailNaviController]
-            var splitViewController = UISplitViewController(nibName: nil, bundle: nil)
+            
+            var splitViewController = UISplitViewController() //nibName: nil, bundle: nil)
             splitViewController.delegate = webViewController
             splitViewController.viewControllers = viewControllers
+            
             self.window!.rootViewController = splitViewController
         } else {
             self.window!.rootViewController = masterNaviController
         }
         
-        
-
         return true
     }
 
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 func deviceIsPad() -> Bool {
-    if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
+    if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
         return true
     } else {
         return false

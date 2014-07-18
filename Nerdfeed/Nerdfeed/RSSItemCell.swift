@@ -15,4 +15,5 @@ class RSSItemCell: UITableViewCell {
     @IBOutlet var catagoryLabel : UILabel
     
     var controller: ListViewController!
+
 }

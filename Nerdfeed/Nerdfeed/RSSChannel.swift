@@ -37,7 +37,7 @@ class RSSChannel: NSObject,
         qualifiedName qName: String!,
         attributes attributeDict: NSDictionary!) {
             
-            println("\(self) found \(elementName)")
+            //println("\(self) found \(elementName)")
             
             if elementName == titleTag {
                 parseTag = elementName
@@ -54,7 +54,7 @@ class RSSChannel: NSObject,
     
     func parser(parser: NSXMLParser!, foundCharacters string: String!) {
         
-        println("foundCharacter: \(string)")
+        //println("foundCharacter: \(string)")
         
         if parseTag? == titleTag {
             self.title = string

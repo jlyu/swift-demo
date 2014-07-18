@@ -38,6 +38,15 @@ class ListViewController: UITableViewController,
         self.tableView.registerNib(xib, forCellReuseIdentifier: "RSSItemCell")
     }
     
+    override func shouldAutorotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation) -> Bool {
+        
+        if deviceIsPad() {
+            return true
+        } else {
+            return toInterfaceOrientation == UIInterfaceOrientation.Portrait
+        }
+    }
+    
     
     // - UITableView DataSource
     
@@ -54,9 +63,10 @@ class ListViewController: UITableViewController,
         
         var cell: RSSItemCell = tableView.dequeueReusableCellWithIdentifier("RSSItemCell") as RSSItemCell
         cell.controller = self
-            
+        
         var item: RSSItem = channel!.items[indexPath.row]
-            
+        //var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "UITableViewCell")
+        //cell.textLabel.text = item.title
         cell.authorLabel.text = item.title
         cell.titleLabel.text = item.link
         cell.catagoryLabel.text = "Programming"
@@ -102,7 +112,7 @@ class ListViewController: UITableViewController,
         self.connection = nil
         self.tableView.reloadData()
         
-        println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
+        //println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
     }
     
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {

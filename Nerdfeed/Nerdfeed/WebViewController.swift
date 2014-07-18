@@ -11,12 +11,20 @@ import UIKit
 class WebViewController: UIViewController,
                          UISplitViewControllerDelegate {
     
+    
+    // - Property
+    
+    
     var webView: UIWebView = UIWebView()
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         
         super.init(nibName: nil, bundle: nil)
     }
+    
+    
+    // - View
+    
     
     override func loadView() {
         super.loadView()
@@ -27,6 +35,13 @@ class WebViewController: UIViewController,
         
     }
     
+    override func shouldAutorotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation) -> Bool {
+        if deviceIsPad() {
+            return true
+        } else {
+            return toInterfaceOrientation == UIInterfaceOrientation.Portrait
+        }
+    }
     
 }
 
