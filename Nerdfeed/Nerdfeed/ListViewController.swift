@@ -85,17 +85,15 @@ class ListViewController: UITableViewController,
         if self.splitViewController == nil {
             
             self.navigationController.pushViewController(webViewController, animated: true)
+        } else {
+            var naviController = UINavigationController(rootViewController: webViewController)
+            self.splitViewController.viewControllers = [self.navigationController, naviController]
+            self.splitViewController.delegate = webViewController
         }
         
         var entry: RSSItem = channel!.items[indexPath.row]
         
-        //let url: NSURL = NSURL(string: entry.link)
-        //let request: NSURLRequest = NSURLRequest(URL: url)
-        
-        //webViewController.webView.loadRequest(request)
-        //webViewController.navigationItem.title = entry.title
-        
-        webViewController.listViewController(self, handleObject: entry)
+        webViewController.listViewController(self, handleObject: entry) //send protocol message
     }
     
     

@@ -9,12 +9,36 @@
 import UIKit
 
 class ChannelViewController: UITableViewController,
-                            ListViewControllerDelegate {
+                                UISplitViewControllerDelegate, ListViewControllerDelegate {
     
     // - Properties
     
     
     var channel: RSSChannel!
+    
+    
+    // - Method
+    
+    
+    func showInfo() {
+        
+        var channelViewController = ChannelViewController(nibName: nil, bundle: nil)
+        
+        if self.splitViewController {
+            var naviViewController = UINavigationController(rootViewController: channelViewController)
+            
+            self.splitViewController.viewControllers = [self.navigationController, navigationController]
+            self.splitViewController.delegate = channelViewController
+            
+            if let selectedRow = self.tableView.indexPathForSelectedRow() {
+                self.tableView.deselectRowAtIndexPath(selectedRow, animated: true)
+            }
+        } else {
+            self.navigationController.pushViewController(channelViewController, animated: true)
+        }
+        
+        channelViewController.listViewController(self, handleObject: channel)
+    }
     
     
     
