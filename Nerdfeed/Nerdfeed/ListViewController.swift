@@ -26,13 +26,38 @@ class ListViewController: UITableViewController,
             var barButtonItem = UIBarButtonItem(title: "Info",
                                                 style: UIBarButtonItemStyle.Bordered,
                                                 target: self,
-                                                action: Selector("showInfo"))
+                                                action: Selector("showInfo:"))
             self.navigationItem.rightBarButtonItem = barButtonItem
             
             self.fetchEntries()
             
         }
     }
+    
+    
+    // - Method
+    
+    
+    func showInfo(sender: AnyObject?) {
+        
+        var channelViewController = ChannelViewController(nibName: nil, bundle: nil)
+        
+        if self.splitViewController {
+            var naviViewController = UINavigationController(rootViewController: channelViewController)
+            
+            self.splitViewController.viewControllers = [self.navigationController, naviViewController]
+            self.splitViewController.delegate = channelViewController
+            
+            if let selectedRow = self.tableView.indexPathForSelectedRow() {
+                self.tableView.deselectRowAtIndexPath(selectedRow, animated: true)
+            }
+        } else {
+            self.navigationController.pushViewController(channelViewController, animated: true)
+        }
+        
+        channelViewController.listViewController(self, handleObject: self.channel!)
+    }
+
     
     
     // - View

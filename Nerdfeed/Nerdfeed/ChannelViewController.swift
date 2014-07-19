@@ -17,27 +17,8 @@ class ChannelViewController: UITableViewController,
     var channel: RSSChannel!
     
     
-    // - Method
-    
-    
-    func showInfo() {
-        
-        var channelViewController = ChannelViewController(nibName: nil, bundle: nil)
-        
-        if self.splitViewController {
-            var naviViewController = UINavigationController(rootViewController: channelViewController)
-            
-            self.splitViewController.viewControllers = [self.navigationController, navigationController]
-            self.splitViewController.delegate = channelViewController
-            
-            if let selectedRow = self.tableView.indexPathForSelectedRow() {
-                self.tableView.deselectRowAtIndexPath(selectedRow, animated: true)
-            }
-        } else {
-            self.navigationController.pushViewController(channelViewController, animated: true)
-        }
-        
-        channelViewController.listViewController(self, handleObject: channel)
+    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nil, bundle: nil)
     }
     
     
@@ -51,18 +32,19 @@ class ChannelViewController: UITableViewController,
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         
-        var cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell") as UITableViewCell
+        //var cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell") as UITableViewCell
+        var cell = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: "UITableViewCell")
         
-        if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "UITableViewCell")
-        }
+        //if cell == nil {
+        //    cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "UITableViewCell")
+        //}
         
         if indexPath.row == 0 {
             cell.textLabel.text = "Title"
-            cell.detailTextLabel.text = channel.title
+            cell.detailTextLabel.text = self.channel!.title
         } else {
             cell.textLabel.text = "Description"
-            cell.detailTextLabel.text = channel.infoString
+            cell.detailTextLabel.text = self.channel!.infoString
         }
         
         return cell
@@ -79,6 +61,7 @@ class ChannelViewController: UITableViewController,
         }
         
         channel = object as RSSChannel
+        //println(channel.title)
         self.tableView.reloadData()
     }
 
