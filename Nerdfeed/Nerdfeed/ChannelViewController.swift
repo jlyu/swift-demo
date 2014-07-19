@@ -22,6 +22,23 @@ class ChannelViewController: UITableViewController,
     }
     
     
+    // - View 
+    
+    
+    func splitViewController(svc: UISplitViewController!, willHideViewController aViewController: UIViewController!, withBarButtonItem barButtonItem: UIBarButtonItem!, forPopoverController pc: UIPopoverController!) {
+        
+        barButtonItem.title = "List"
+        self.navigationItem.leftBarButtonItem = barButtonItem
+        
+    }
+    
+    func splitViewController(svc: UISplitViewController!, willShowViewController aViewController: UIViewController!, invalidatingBarButtonItem barButtonItem: UIBarButtonItem!) {
+        
+        if barButtonItem == self.navigationItem.leftBarButtonItem {
+            self.navigationItem.leftBarButtonItem = nil
+        }
+    }
+    
     
     // - UITableView DataSource
     
