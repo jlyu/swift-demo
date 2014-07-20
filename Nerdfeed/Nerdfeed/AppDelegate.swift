@@ -60,11 +60,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+func deviceVersionIs8_0() -> Bool {
+    if UIDevice.currentDevice().systemVersion == "8.0" {
+        return true
+    }
+    return false
+}
+
 func deviceIsPad() -> Bool {
     if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
         return true
-    } else {
-        return false
     }
+    return false
 }
 

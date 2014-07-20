@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+import Foundation
 
 class RSSChannel: NSObject,
                   NSXMLParserDelegate {
+    
+    // - Proporties
+    
     
     var parentParserDelegate: ListViewController?
     var title: String = String()
@@ -29,6 +32,18 @@ class RSSChannel: NSObject,
     let descriptionTag = "description"
     let itemTag = "item"
     let channelTag = "channel"
+    
+    
+    // - Method
+    
+    
+    func trimItemTitles() {
+        //var regx = NSRegularExpression(pattern: "Author", //".* : (.*) : .*",
+        //    options: 0, error: nil)
+        
+    }
+
+    
     
     // Conform NSXMLParserDelegate
     func parser(parser: NSXMLParser!,
@@ -73,6 +88,7 @@ class RSSChannel: NSObject,
             
             if elementName == channelTag {
                 parser.delegate = parentParserDelegate!
+                self.trimItemTitles()
             }
     }
     

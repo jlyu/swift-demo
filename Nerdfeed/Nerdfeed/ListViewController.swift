@@ -155,13 +155,23 @@ class ListViewController: UITableViewController,
         //println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
     }
     
+    
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
         self.connection = nil
         self.xmlData = nil
         var errorString = "Fetch failed: \(error.localizedDescription)"
-        var alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
+        
+        if deviceVersionIs8_0() {
+            //var alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
+            //alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            //self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            let alertView = UIAlertView()//(title: "Fetch Failed", message: errorString, delegate: self, cancelButtonTitle: "dismiss")
+            alertView.title = "Warning"
+            alertView.message = errorString
+            alertView.addButtonWithTitle("Dismiss")
+            alertView.show()
+        }
     }
     
     
@@ -191,3 +201,13 @@ protocol ListViewControllerDelegate {
     
     func listViewController(lvc: ListViewController, handleObject object: AnyObject)
 }
+
+
+// - Extension
+
+/*
+extension UIAlertView {
+    
+    convenience init(title: String, message: String, delegate: UIAlertViewDelegate?, cancelButtonTitle: String?, otherButtonTitles firstButtonTitle: String, _ moreButtonTitles: String...) { }
+}
+*/
