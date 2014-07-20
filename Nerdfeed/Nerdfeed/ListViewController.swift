@@ -45,6 +45,10 @@ class ListViewController: UITableViewController,
         if self.splitViewController {
             var naviViewController = UINavigationController(rootViewController: channelViewController)
             
+            var barButtonItem = UIBarButtonItem()
+            barButtonItem.title = "List" // TODO: add target-action event
+            channelViewController.navigationItem.leftBarButtonItem = barButtonItem
+            
             self.splitViewController.viewControllers = [self.navigationController, naviViewController]
             self.splitViewController.delegate = channelViewController
             
