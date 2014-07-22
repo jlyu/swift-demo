@@ -38,13 +38,24 @@ class RSSChannel: NSObject,
     
     
     func trimItemTitles() {
-        var regx: NSRegularExpression = NSRegularExpression.regularExpressionWithPattern(".* : (.*) : .*",
+        var regx: NSRegularExpression = NSRegularExpression.regularExpressionWithPattern(".* :: (.*) :: .*",
                                                                     options: nil, error: nil)
         for item in items {
             var matches = regx.matchesInString(item.title, options: nil, range: NSMakeRange(0, countElements(item.title)))
             if matches.count > 0 {
                 var result: NSTextCheckingResult = matches[0] as NSTextCheckingResult
                 var range: NSRange = result.range
+                
+                println("Match at {\(range.location),\(range.length)} for \(item.title)")
+                
+                if result.numberOfRanges == 2 {
+                    let r: NSRange = result.rangeAtIndex(1)
+                    
+                    var itemTitle = item.title as NSString
+                    itemTitle = itemTitle.substringWithRange(NSRange(location: r.location, length: r.length))
+                    
+                    item.title = itemTitle
+                }
                 
             }
             
