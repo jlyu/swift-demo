@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		360D5D20197581C10027D162 /* RSSChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360D5D1F197581C10027D162 /* RSSChannel.swift */; };
 		362B302319740EBD005DA6F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B302219740EBD005DA6F8 /* AppDelegate.swift */; };
 		362B302A19740EBD005DA6F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 362B302919740EBD005DA6F8 /* Images.xcassets */; };
 		362B303619740EBD005DA6F8 /* NerdfeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B303519740EBD005DA6F8 /* NerdfeedTests.swift */; };
-		362B304019740F0E005DA6F8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362B303F19740F0E005DA6F8 /* ListViewController.swift */; };
-		365F104F1979A29500F5FF3E /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F104E1979A29500F5FF3E /* ChannelViewController.swift */; };
-		36C661A01976B4680031E55F /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C6619F1976B4680031E55F /* RSSItem.swift */; };
-		36D73790197801710099CD55 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D7378F197801710099CD55 /* WebViewController.swift */; };
-		36D737941978223D0099CD55 /* RSSItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36D737931978223D0099CD55 /* RSSItemCell.xib */; };
-		36D73796197822640099CD55 /* RSSItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D73795197822640099CD55 /* RSSItemCell.swift */; };
+		365F1056197E99BA00F5FF3E /* RSSChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F1054197E99BA00F5FF3E /* RSSChannel.swift */; };
+		365F1057197E99BA00F5FF3E /* RSSItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F1055197E99BA00F5FF3E /* RSSItem.swift */; };
+		365F105A197E9A0600F5FF3E /* RSSItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F1058197E9A0600F5FF3E /* RSSItemCell.swift */; };
+		365F105B197E9A0600F5FF3E /* RSSItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365F1059197E9A0600F5FF3E /* RSSItemCell.xib */; };
+		365F105F197E9A3500F5FF3E /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F105C197E9A3500F5FF3E /* ChannelViewController.swift */; };
+		365F1060197E9A3500F5FF3E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F105D197E9A3500F5FF3E /* ListViewController.swift */; };
+		365F1061197E9A3500F5FF3E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F105E197E9A3500F5FF3E /* WebViewController.swift */; };
+		365F1065197E9AE500F5FF3E /* BNRFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F1064197E9AE500F5FF3E /* BNRFeedStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		360D5D1F197581C10027D162 /* RSSChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSChannel.swift; sourceTree = "<group>"; };
 		362B301D19740EBD005DA6F8 /* Nerdfeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerdfeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		362B302119740EBD005DA6F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		362B302219740EBD005DA6F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,12 +38,14 @@
 		362B302F19740EBD005DA6F8 /* NerdfeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NerdfeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		362B303419740EBD005DA6F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		362B303519740EBD005DA6F8 /* NerdfeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdfeedTests.swift; sourceTree = "<group>"; };
-		362B303F19740F0E005DA6F8 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		365F104E1979A29500F5FF3E /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
-		36C6619F1976B4680031E55F /* RSSItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItem.swift; sourceTree = "<group>"; };
-		36D7378F197801710099CD55 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		36D737931978223D0099CD55 /* RSSItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSItemCell.xib; sourceTree = "<group>"; };
-		36D73795197822640099CD55 /* RSSItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSItemCell.swift; sourceTree = "<group>"; };
+		365F1054197E99BA00F5FF3E /* RSSChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RSSChannel.swift; path = Model/RSSChannel.swift; sourceTree = "<group>"; };
+		365F1055197E99BA00F5FF3E /* RSSItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RSSItem.swift; path = Model/RSSItem.swift; sourceTree = "<group>"; };
+		365F1058197E9A0600F5FF3E /* RSSItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RSSItemCell.swift; path = View/RSSItemCell.swift; sourceTree = "<group>"; };
+		365F1059197E9A0600F5FF3E /* RSSItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RSSItemCell.xib; path = View/RSSItemCell.xib; sourceTree = "<group>"; };
+		365F105C197E9A3500F5FF3E /* ChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelViewController.swift; path = Controller/ChannelViewController.swift; sourceTree = "<group>"; };
+		365F105D197E9A3500F5FF3E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = Controller/ListViewController.swift; sourceTree = "<group>"; };
+		365F105E197E9A3500F5FF3E /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = Controller/WebViewController.swift; sourceTree = "<group>"; };
+		365F1064197E9AE500F5FF3E /* BNRFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BNRFeedStore.swift; path = Store/BNRFeedStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,16 +87,13 @@
 		362B301F19740EBD005DA6F8 /* Nerdfeed */ = {
 			isa = PBXGroup;
 			children = (
+				365F1050197E992500F5FF3E /* Store */,
+				365F1051197E993500F5FF3E /* Model */,
+				365F1052197E995800F5FF3E /* View */,
+				365F1053197E996300F5FF3E /* Controller */,
 				362B302219740EBD005DA6F8 /* AppDelegate.swift */,
 				362B302919740EBD005DA6F8 /* Images.xcassets */,
 				362B302019740EBD005DA6F8 /* Supporting Files */,
-				36C6619F1976B4680031E55F /* RSSItem.swift */,
-				360D5D1F197581C10027D162 /* RSSChannel.swift */,
-				362B303F19740F0E005DA6F8 /* ListViewController.swift */,
-				365F104E1979A29500F5FF3E /* ChannelViewController.swift */,
-				36D7378F197801710099CD55 /* WebViewController.swift */,
-				36D737931978223D0099CD55 /* RSSItemCell.xib */,
-				36D73795197822640099CD55 /* RSSItemCell.swift */,
 			);
 			path = Nerdfeed;
 			sourceTree = "<group>";
@@ -122,6 +121,42 @@
 				362B303419740EBD005DA6F8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		365F1050197E992500F5FF3E /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				365F1064197E9AE500F5FF3E /* BNRFeedStore.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		365F1051197E993500F5FF3E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				365F1054197E99BA00F5FF3E /* RSSChannel.swift */,
+				365F1055197E99BA00F5FF3E /* RSSItem.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		365F1052197E995800F5FF3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				365F1058197E9A0600F5FF3E /* RSSItemCell.swift */,
+				365F1059197E9A0600F5FF3E /* RSSItemCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		365F1053197E996300F5FF3E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				365F105C197E9A3500F5FF3E /* ChannelViewController.swift */,
+				365F105D197E9A3500F5FF3E /* ListViewController.swift */,
+				365F105E197E9A3500F5FF3E /* WebViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +239,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365F105B197E9A0600F5FF3E /* RSSItemCell.xib in Resources */,
 				362B302A19740EBD005DA6F8 /* Images.xcassets in Resources */,
-				36D737941978223D0099CD55 /* RSSItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,13 +258,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				360D5D20197581C10027D162 /* RSSChannel.swift in Sources */,
-				36C661A01976B4680031E55F /* RSSItem.swift in Sources */,
+				365F1065197E9AE500F5FF3E /* BNRFeedStore.swift in Sources */,
+				365F1057197E99BA00F5FF3E /* RSSItem.swift in Sources */,
 				362B302319740EBD005DA6F8 /* AppDelegate.swift in Sources */,
-				36D73790197801710099CD55 /* WebViewController.swift in Sources */,
-				362B304019740F0E005DA6F8 /* ListViewController.swift in Sources */,
-				365F104F1979A29500F5FF3E /* ChannelViewController.swift in Sources */,
-				36D73796197822640099CD55 /* RSSItemCell.swift in Sources */,
+				365F1061197E9A3500F5FF3E /* WebViewController.swift in Sources */,
+				365F105A197E9A0600F5FF3E /* RSSItemCell.swift in Sources */,
+				365F1056197E99BA00F5FF3E /* RSSChannel.swift in Sources */,
+				365F1060197E9A3500F5FF3E /* ListViewController.swift in Sources */,
+				365F105F197E9A3500F5FF3E /* ChannelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

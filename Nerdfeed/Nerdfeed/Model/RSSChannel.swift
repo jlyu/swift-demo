@@ -38,7 +38,7 @@ class RSSChannel: NSObject,
     
     
     func trimItemTitles() {
-        var regx: NSRegularExpression = NSRegularExpression.regularExpressionWithPattern(".* :: (.*) :: .*",
+        var regx: NSRegularExpression = NSRegularExpression.regularExpressionWithPattern(".* :: [Re: ]*(.*) :: .*",
                                                                     options: nil, error: nil)
         for item in items {
             var matches = regx.matchesInString(item.title, options: nil, range: NSMakeRange(0, countElements(item.title)))
