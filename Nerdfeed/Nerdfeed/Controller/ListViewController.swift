@@ -14,8 +14,8 @@ class ListViewController: UITableViewController,
     // - Properties
     
     
-    var connection: NSURLConnection?
-    var xmlData: NSMutableData? = NSMutableData()
+    //var connection: NSURLConnection?
+    //var xmlData: NSMutableData? = NSMutableData()
     var channel: RSSChannel?
     
     var webViewController: WebViewController!
@@ -126,20 +126,37 @@ class ListViewController: UITableViewController,
     }
     
     
+    func fetchRSSFeedCompletionHandle(obj: RSSChannel!, err: NSError!) {
+        if err == nil {
+            
+            channel = obj
+            self.tableView.reloadData()
+            
+        } else {
+            
+            let errorString = "Fetch failed: \(err.localizedDescription)"
+            let alertView = UIAlertView()
+            alertView.title = "Warning"
+            alertView.message = errorString
+            alertView.addButtonWithTitle("Dismiss")
+            alertView.show()
+            
+        }
+    }
+    
     
     func fetchEntries() {
+        /*
         let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")
         let reqest = NSURLRequest(URL: requestURL)
         self.connection = NSURLConnection(request: reqest, delegate: self, startImmediately: true)
+        */
+        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(callback: fetchRSSFeedCompletionHandle)
     }
     
     
     // - XML Data
     
-    
-    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
-        xmlData!.appendData(data)
-    }
     
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         //var xmlCheck = NSString(data: xmlData, encoding: NSUTF8StringEncoding)
@@ -153,6 +170,12 @@ class ListViewController: UITableViewController,
         self.tableView.reloadData()
         
         //println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
+    }
+    
+    /*
+    
+    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
+        xmlData!.appendData(data)
     }
     
     
@@ -173,7 +196,7 @@ class ListViewController: UITableViewController,
             alertView.show()
         }
     }
-    
+
     
     // - NSXMLParserDelegate
     
@@ -193,6 +216,8 @@ class ListViewController: UITableViewController,
             }
         
     }
+
+    */
 }
 
 

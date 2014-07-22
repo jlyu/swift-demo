@@ -11,7 +11,7 @@ import Foundation
 
 class BNRFeedStore: NSObject {
     
-    // Singleton
+    // - Singleton
     
     struct Static {
         static var token: dispatch_once_t = 0
@@ -26,6 +26,15 @@ class BNRFeedStore: NSObject {
     init() {
         
     }
+    
+    
+    // - Method
+    
+    typealias fetchRSSFeedWithCompletionHandler = (obj: RSSChannel!, err: NSError!) -> Void
+    func fetchRSSFeedWithCompletion(callback completionHandler: fetchRSSFeedWithCompletionHandler) {
+        
+    }
+    
     
     
 }
