@@ -18,6 +18,7 @@
 		365F1060197E9A3500F5FF3E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F105D197E9A3500F5FF3E /* ListViewController.swift */; };
 		365F1061197E9A3500F5FF3E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F105E197E9A3500F5FF3E /* WebViewController.swift */; };
 		365F1065197E9AE500F5FF3E /* BNRFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F1064197E9AE500F5FF3E /* BNRFeedStore.swift */; };
+		365F1069197FF45100F5FF3E /* BNRConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365F1068197FF45100F5FF3E /* BNRConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		365F105D197E9A3500F5FF3E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListViewController.swift; path = Controller/ListViewController.swift; sourceTree = "<group>"; };
 		365F105E197E9A3500F5FF3E /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = Controller/WebViewController.swift; sourceTree = "<group>"; };
 		365F1064197E9AE500F5FF3E /* BNRFeedStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BNRFeedStore.swift; path = Store/BNRFeedStore.swift; sourceTree = "<group>"; };
+		365F1068197FF45100F5FF3E /* BNRConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BNRConnection.swift; path = Store/BNRConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		365F1050197E992500F5FF3E /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				365F1068197FF45100F5FF3E /* BNRConnection.swift */,
 				365F1064197E9AE500F5FF3E /* BNRFeedStore.swift */,
 			);
 			name = Store;
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365F1069197FF45100F5FF3E /* BNRConnection.swift in Sources */,
 				365F1065197E9AE500F5FF3E /* BNRFeedStore.swift in Sources */,
 				365F1057197E99BA00F5FF3E /* RSSItem.swift in Sources */,
 				362B302319740EBD005DA6F8 /* AppDelegate.swift in Sources */,

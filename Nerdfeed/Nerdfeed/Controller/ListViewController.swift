@@ -9,7 +9,7 @@
 import UIKit
 
 class ListViewController: UITableViewController,
-                            NSXMLParserDelegate{
+                            NSXMLParserDelegate {
     
     // - Properties
     
@@ -162,12 +162,14 @@ class ListViewController: UITableViewController,
         //var xmlCheck = NSString(data: xmlData, encoding: NSUTF8StringEncoding)
         //println("xmlCheck = \(xmlCheck)")
         
+        /*
         let parser = NSXMLParser(data: xmlData)
         parser.delegate = self
         parser.parse() // blocking..
         self.xmlData = nil
         self.connection = nil
         self.tableView.reloadData()
+        */
         
         //println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
     }
