@@ -18,7 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         var listViewController = ListViewController(nibName: nil, bundle: nil)
         var masterNaviController = UINavigationController(rootViewController: listViewController)
-        self.window!.rootViewController = masterNaviController
+        var webViewController = WebViewController(nibName: nil, bundle: nil)
+        listViewController.webViewController = webViewController
+        
+        if deviceIsPad() {
+            var detailNaviController = UINavigationController(rootViewController: webViewController)
+            
+            var splitViewController = UISplitViewController(nibName: nil, bundle: nil)
+            splitViewController.delegate = webViewController
+            splitViewController.viewControllers = [masterNaviController, detailNaviController]
+            
+            self.window!.rootViewController = splitViewController
+        } else {
+            self.window!.rootViewController = masterNaviController
+        }
+        
         return true
     }
 
@@ -44,6 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
 
+func deviceVersionIs8_0() -> Bool {
+    if UIDevice.currentDevice().systemVersion == "8.0" {
+        return true
+    }
+    return false
+}
+
+func deviceIsPad() -> Bool {
+    if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        return true
+    }
+    return false
 }
 
