@@ -34,7 +34,10 @@ class BNRFeedStore: NSObject {
     func fetchRSSFeedWithCompletion(callback completionHandler: fetchRSSFeedWithCompletionHandler) {
         
         let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")
-        let reqest = NSURLRequest(URL: requestURL)
+        let request = NSURLRequest(URL: requestURL)
+        
+        var channel: RSSChannel = RSSChannel()
+        var connection: BNRConnection = BNRConnection(request: request)
         
         
     }

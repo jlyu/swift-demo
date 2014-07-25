@@ -22,6 +22,12 @@ class BNRConnection: NSObject,
     var request: NSURLRequest?
     var xmlParseResult: NSXMLParserDelegate?
     
+    init(request req: NSURLRequest) {
+        self.request = req
+        
+        super.init()
+    }
+    
     
     
     //var callbackHandler = func (obj: AnyObject!, err: NSError!) -> Void
