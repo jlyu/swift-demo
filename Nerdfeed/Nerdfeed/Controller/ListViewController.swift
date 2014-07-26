@@ -125,7 +125,7 @@ class ListViewController: UITableViewController,
         webViewController.listViewController(self, handleObject: entry) //send protocol message
     }
     
-    
+    /*
     func fetchRSSFeedCompletionHandle(obj: RSSChannel!, err: NSError!) {
         if err == nil {
             
@@ -143,15 +143,23 @@ class ListViewController: UITableViewController,
             
         }
     }
-    
+    */
     
     func fetchEntries() {
-        /*
-        let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")
-        let reqest = NSURLRequest(URL: requestURL)
-        self.connection = NSURLConnection(request: reqest, delegate: self, startImmediately: true)
-        */
-        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(callback: fetchRSSFeedCompletionHandle)
+     
+        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(callback: { obj, err in
+            if err == nil {
+                self.channel = obj
+                self.tableView.reloadData()
+            } else {
+                let errorString = "Fetch failed: \(err.localizedDescription)"
+                let alertView = UIAlertView()
+                alertView.title = "Warning"
+                alertView.message = errorString
+                alertView.addButtonWithTitle("Dismiss")
+                alertView.show()
+            }
+        })
     }
     
     
