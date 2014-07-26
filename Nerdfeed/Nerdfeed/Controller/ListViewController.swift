@@ -14,14 +14,12 @@ class ListViewController: UITableViewController,
     // - Properties
     
     
-    //var connection: NSURLConnection?
-    //var xmlData: NSMutableData? = NSMutableData()
     var channel: RSSChannel?
-    
     var webViewController: WebViewController!
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nil, bundle: nil)
+        
         if self != nil {
             var barButtonItem = UIBarButtonItem(title: "Info",
                                                 style: UIBarButtonItemStyle.Bordered,
@@ -30,7 +28,6 @@ class ListViewController: UITableViewController,
             self.navigationItem.rightBarButtonItem = barButtonItem
             
             self.fetchEntries()
-            
         }
     }
     
@@ -125,7 +122,7 @@ class ListViewController: UITableViewController,
         webViewController.listViewController(self, handleObject: entry) //send protocol message
     }
     
-    
+    /*
     func fetchRSSFeedCompletionHandle(obj: RSSChannel!, err: NSError!) {
         if err == nil {
             
@@ -143,21 +140,29 @@ class ListViewController: UITableViewController,
             
         }
     }
-    
+    */
     
     func fetchEntries() {
-        /*
-        let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")
-        let reqest = NSURLRequest(URL: requestURL)
-        self.connection = NSURLConnection(request: reqest, delegate: self, startImmediately: true)
-        */
-        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(callback: fetchRSSFeedCompletionHandle)
+     
+        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: { obj, err in
+            if err == nil {
+                self.channel = obj
+                self.tableView.reloadData()
+            } else {
+                let errorString = "Fetch failed: \(err.localizedDescription)"
+                let alertView = UIAlertView()
+                alertView.title = "Warning"
+                alertView.message = errorString
+                alertView.addButtonWithTitle("Dismiss")
+                alertView.show()
+            }
+        })
     }
     
     
     // - XML Data
     
-    
+    /*
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         //var xmlCheck = NSString(data: xmlData, encoding: NSUTF8StringEncoding)
         //println("xmlCheck = \(xmlCheck)")
@@ -174,7 +179,6 @@ class ListViewController: UITableViewController,
         //println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
     }
     
-    /*
     
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
         xmlData!.appendData(data)
@@ -224,17 +228,9 @@ class ListViewController: UITableViewController,
 
 
 // - Protocol
+
+
 protocol ListViewControllerDelegate {
     
     func listViewController(lvc: ListViewController, handleObject object: AnyObject)
 }
-
-
-// - Extension
-
-/*
-extension UIAlertView {
-    
-    convenience init(title: String, message: String, delegate: UIAlertViewDelegate?, cancelButtonTitle: String?, otherButtonTitles firstButtonTitle: String, _ moreButtonTitles: String...) { }
-}
-*/
