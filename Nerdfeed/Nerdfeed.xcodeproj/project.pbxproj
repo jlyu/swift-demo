@@ -89,11 +89,12 @@
 		362B301F19740EBD005DA6F8 /* Nerdfeed */ = {
 			isa = PBXGroup;
 			children = (
+				362B302219740EBD005DA6F8 /* AppDelegate.swift */,
+				365F106A1984040F00F5FF3E /* Utility */,
 				365F1050197E992500F5FF3E /* Store */,
 				365F1051197E993500F5FF3E /* Model */,
 				365F1052197E995800F5FF3E /* View */,
 				365F1053197E996300F5FF3E /* Controller */,
-				362B302219740EBD005DA6F8 /* AppDelegate.swift */,
 				362B302919740EBD005DA6F8 /* Images.xcassets */,
 				362B302019740EBD005DA6F8 /* Supporting Files */,
 			);
@@ -128,7 +129,6 @@
 		365F1050197E992500F5FF3E /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				365F1068197FF45100F5FF3E /* BNRConnection.swift */,
 				365F1064197E9AE500F5FF3E /* BNRFeedStore.swift */,
 			);
 			name = Store;
@@ -160,6 +160,14 @@
 				365F105E197E9A3500F5FF3E /* WebViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		365F106A1984040F00F5FF3E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				365F1068197FF45100F5FF3E /* BNRConnection.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

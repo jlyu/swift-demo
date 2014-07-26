@@ -22,6 +22,7 @@ class ListViewController: UITableViewController,
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nil, bundle: nil)
+        
         if self != nil {
             var barButtonItem = UIBarButtonItem(title: "Info",
                                                 style: UIBarButtonItemStyle.Bordered,
@@ -30,7 +31,6 @@ class ListViewController: UITableViewController,
             self.navigationItem.rightBarButtonItem = barButtonItem
             
             self.fetchEntries()
-            
         }
     }
     

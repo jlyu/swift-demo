@@ -9,6 +9,10 @@
 import UIKit
 
 
+// Global variable
+
+var sharedConnectionListInstance: Array<BNRConnection> = []
+
 class BNRConnection: NSObject,
                      NSURLConnectionDelegate, NSURLConnectionDataDelegate {
     
@@ -20,7 +24,13 @@ class BNRConnection: NSObject,
     var container: NSMutableData? = NSMutableData()
     
     var request: NSURLRequest?
-    var xmlParseResult: NSXMLParserDelegate?
+    var xmlRootObject: NSXMLParserDelegate?
+    
+    class func sharedConnectionList()-> Array<BNRConnection> {
+        return sharedConnectionListInstance
+    }
+    
+    var completionBlock: (RSSChannel, NSError) -> Void = { obj, err in }
     
     init(request req: NSURLRequest) {
         self.request = req
@@ -36,6 +46,10 @@ class BNRConnection: NSObject,
     // - Method
     
     func start() {
+        internalConnection = NSURLConnection(request: request, delegate: self, startImmediately: true)
+        
+        BNRConnection.sharedConnectionList().append(self)
+        
         
     }
 }

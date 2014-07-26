@@ -31,15 +31,17 @@ class BNRFeedStore: NSObject {
     // - Method
     
     typealias fetchRSSFeedWithCompletionHandler = (obj: RSSChannel!, err: NSError!) -> Void
-    func fetchRSSFeedWithCompletion(callback completionHandler: fetchRSSFeedWithCompletionHandler) {
+    func fetchRSSFeedWithCompletion(callback block: fetchRSSFeedWithCompletionHandler) {
         
         let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")
         let request = NSURLRequest(URL: requestURL)
         
         var channel: RSSChannel = RSSChannel()
         var connection: BNRConnection = BNRConnection(request: request)
+        connection.completionBlock = block
+        connection.xmlRootObject = channel
         
-        
+        connection.start()
     }
     
     
