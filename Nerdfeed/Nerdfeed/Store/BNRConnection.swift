@@ -24,9 +24,9 @@ class BNRConnection: NSObject,
     var container: NSMutableData? = NSMutableData()
     
     var request: NSURLRequest?
-    var xmlRootObject: NSXMLParserDelegate?
+    var xmlRootObject: RSSChannel? //NSXMLParserDelegate?
     
-    var completionBlock: (RSSChannel, NSError) -> Void = { obj, err in }
+    var completionBlock: (RSSChannel!, NSError!) -> Void = { obj, err in }
     
     init(request req: NSURLRequest) {
         self.request = req
@@ -41,9 +41,48 @@ class BNRConnection: NSObject,
     
     // - Method
     
+    
     func start() {
         internalConnection = NSURLConnection(request: request, delegate: self, startImmediately: true)
         
         sharedConnectionList.append(self)
+    }
+    
+    
+    
+    // - Handle NSURLConnection Respond
+    
+
+    func connectionDidFinishLoading(connection: NSURLConnection!) {
+        
+        if xmlRootObject != nil {
+            let parser = NSXMLParser(data: container)
+            parser.delegate = xmlRootObject
+            parser.parse()
+            
+            if completionBlock != nil {  // ???
+                self.completionBlock(xmlRootObject, nil)
+            }
+            
+            sharedConnectionList.removeObject(self)
+        }
+    }
+}
+
+extension Array {
+    
+    mutating func removeObject<U: Equatable>(object: U) {
+        var index: Int?
+        for (idx, objectToCompare) in enumerate(self) {
+            if let to = objectToCompare as? U {
+                if object == to {
+                    index = idx
+                }
+            }
+        }
+        
+        if index {
+            self.removeAtIndex(index!)
+        }
     }
 }

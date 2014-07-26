@@ -147,7 +147,7 @@ class ListViewController: UITableViewController,
     
     func fetchEntries() {
      
-        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(callback: { obj, err in
+        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: { obj, err in
             if err == nil {
                 self.channel = obj
                 self.tableView.reloadData()
@@ -165,7 +165,7 @@ class ListViewController: UITableViewController,
     
     // - XML Data
     
-    
+    /*
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         //var xmlCheck = NSString(data: xmlData, encoding: NSUTF8StringEncoding)
         //println("xmlCheck = \(xmlCheck)")
@@ -182,7 +182,6 @@ class ListViewController: UITableViewController,
         //println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
     }
     
-    /*
     
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
         xmlData!.appendData(data)
