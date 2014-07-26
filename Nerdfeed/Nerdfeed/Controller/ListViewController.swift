@@ -14,10 +14,7 @@ class ListViewController: UITableViewController,
     // - Properties
     
     
-    //var connection: NSURLConnection?
-    //var xmlData: NSMutableData? = NSMutableData()
     var channel: RSSChannel?
-    
     var webViewController: WebViewController!
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -231,17 +228,9 @@ class ListViewController: UITableViewController,
 
 
 // - Protocol
+
+
 protocol ListViewControllerDelegate {
     
     func listViewController(lvc: ListViewController, handleObject object: AnyObject)
 }
-
-
-// - Extension
-
-/*
-extension UIAlertView {
-    
-    convenience init(title: String, message: String, delegate: UIAlertViewDelegate?, cancelButtonTitle: String?, otherButtonTitles firstButtonTitle: String, _ moreButtonTitles: String...) { }
-}
-*/

@@ -14,7 +14,8 @@ var sharedConnectionList: Array<BNRConnection> = []
 
 
 class BNRConnection: NSObject,
-                     NSURLConnectionDelegate, NSURLConnectionDataDelegate {
+                     NSURLConnectionDelegate, NSURLConnectionDataDelegate,
+                     NSXMLParserDelegate {
     
     
     // - Properties
@@ -43,6 +44,8 @@ class BNRConnection: NSObject,
     
     
     func start() {
+        
+        container = NSMutableData()
         internalConnection = NSURLConnection(request: request, delegate: self, startImmediately: true)
         
         sharedConnectionList.append(self)
@@ -52,12 +55,19 @@ class BNRConnection: NSObject,
     
     // - Handle NSURLConnection Respond
     
+    
+    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
+        container!.appendData(data)
+    }
+    
 
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         
         if xmlRootObject != nil {
             let parser = NSXMLParser(data: container)
             parser.delegate = xmlRootObject
+            xmlRootObject!.parentParserDelegate = self
+            
             parser.parse()
             
             if completionBlock != nil {  // ???
@@ -67,7 +77,21 @@ class BNRConnection: NSObject,
             sharedConnectionList.removeObject(self)
         }
     }
+    
+    
+    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
+        if completionBlock != nil {
+            self.completionBlock(nil, error)
+        }
+        
+        sharedConnectionList.removeObject(self)
+    }
 }
+
+
+
+
+// - Extension
 
 extension Array {
     

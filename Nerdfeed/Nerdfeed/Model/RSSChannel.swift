@@ -15,7 +15,7 @@ class RSSChannel: NSObject,
     // - Proporties
     
     
-    var parentParserDelegate: ListViewController?
+    var parentParserDelegate: BNRConnection? //ListViewController?
     var title: String = String()
     var infoString: String = String()
     var items: Array<RSSItem> = Array()
