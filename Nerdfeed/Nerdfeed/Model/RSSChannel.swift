@@ -32,6 +32,8 @@ class RSSChannel: NSObject,
     let descriptionTag = "description"
     let itemTag = "item"
     let channelTag = "channel"
+    let entryTag = "entry"
+
     
     
     // - Method
@@ -78,7 +80,7 @@ class RSSChannel: NSObject,
                 parseTag = elementName
             } else if elementName == descriptionTag {
                 parseTag = elementName
-            } else if elementName == itemTag {
+            } else if (elementName == itemTag) || (elementName == entryTag) {
                 var entry = RSSItem()
                 entry.parentParserDelegate = self
                 parser.delegate = entry

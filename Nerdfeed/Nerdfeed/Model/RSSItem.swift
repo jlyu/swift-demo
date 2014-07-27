@@ -26,7 +26,8 @@ class RSSItem: NSObject,
     let titleTag = "title"
     let linkTag = "link"
     let itemTag = "item"
-
+    let entryTag = "entry"
+    
     
     // Conform NSXMLParserDelegate
     func parser(parser: NSXMLParser!,
@@ -66,7 +67,7 @@ class RSSItem: NSObject,
             
             parseTag = nil
             
-            if elementName == itemTag {
+            if (elementName == itemTag) || (elementName == entryTag) {
                 parser.delegate = parentParserDelegate!
             }
     }
