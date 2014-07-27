@@ -148,7 +148,7 @@ class ListViewController: UITableViewController,
         //cell.textLabel.text = item.title
         cell.authorLabel.text = item.title
         cell.titleLabel.text = item.link
-        cell.catagoryLabel.text = "Programming"
+        cell.catagoryLabel.text = "Pro"
         return cell
     }
     
@@ -177,6 +177,9 @@ class ListViewController: UITableViewController,
 
 
 protocol ListViewControllerDelegate {
-    
     func listViewController(lvc: ListViewController, handleObject object: AnyObject)
+}
+
+protocol JSONSerializable {
+    func readFromJSONDictionary(d: NSDictionary)
 }

@@ -46,7 +46,7 @@ class BNRFeedStore: NSObject {
     }
     
     func fetchTopSongs(#count: Int, withCompletion block: (obj: RSSChannel!, err: NSError!)->Void ) {
-        let requestString = "http://itunes.apple.com/jp/rss/topsongs/limit=\(count)/xml"
+        let requestString = "http://itunes.apple.com/jp/rss/topsongs/limit=\(count)/json" // <- xml
         let URL = NSURL(string: requestString)
         let request = NSURLRequest(URL: URL)
         

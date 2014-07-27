@@ -26,6 +26,7 @@ class BNRConnection: NSObject,
     
     var request: NSURLRequest?
     var xmlRootObject: RSSChannel? //NSXMLParserDelegate?
+    var jsonRootObject: RSSChannel? //JSONSerializable
     
     var completionBlock: (RSSChannel!, NSError!) -> Void = { obj, err in }
     

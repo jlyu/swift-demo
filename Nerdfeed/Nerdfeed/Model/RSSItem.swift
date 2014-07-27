@@ -10,7 +10,7 @@ import UIKit
 
 
 class RSSItem: NSObject,
-                NSXMLParserDelegate {
+                NSXMLParserDelegate, JSONSerializable {
     
     var parentParserDelegate: RSSChannel?
     var title: String = String()
@@ -27,6 +27,13 @@ class RSSItem: NSObject,
     let linkTag = "link"
     let itemTag = "item"
     let entryTag = "entry"
+    
+    
+    // - Conform JSONSerializable
+    
+    func readFromJSONDictionary(d: NSDictionary) {
+        
+    }
     
     
     // Conform NSXMLParserDelegate
