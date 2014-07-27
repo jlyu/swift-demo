@@ -48,6 +48,32 @@ class ListViewController: UITableViewController,
     // - Method
     
     
+    func fetchEntries() {
+        
+        var completionBlock: (obj: RSSChannel!, err: NSError!)-> Void = { obj, err in
+            
+            if err == nil {
+                self.channel = obj
+                self.tableView.reloadData()
+            } else {
+                let errorString = "Fetch failed: \(err.localizedDescription)"
+                let alertView = UIAlertView()
+                alertView.title = "Warning"
+                alertView.message = errorString
+                alertView.addButtonWithTitle("Dismiss")
+                alertView.show()
+            }
+        }
+        
+        if rssType == .ListViewControllerRSSTypeBNR {
+            BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: completionBlock)
+        } else if rssType == .ListViewControllerRSSTypeApple {
+            BNRFeedStore.sharedStore.fetchTopSongs(count: 10, withCompletion: completionBlock)
+        }
+    }
+
+    
+    
     func showInfo(sender: AnyObject?) {
         
         var channelViewController = ChannelViewController(nibName: nil, bundle: nil)
@@ -143,22 +169,6 @@ class ListViewController: UITableViewController,
     }
     
     
-    func fetchEntries() {
-     
-        BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: { obj, err in
-            if err == nil {
-                self.channel = obj
-                self.tableView.reloadData()
-            } else {
-                let errorString = "Fetch failed: \(err.localizedDescription)"
-                let alertView = UIAlertView()
-                alertView.title = "Warning"
-                alertView.message = errorString
-                alertView.addButtonWithTitle("Dismiss")
-                alertView.show()
-            }
-        })
-    }
     
 }
 
