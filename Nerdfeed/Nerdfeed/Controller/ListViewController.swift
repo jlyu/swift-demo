@@ -11,6 +11,11 @@ import UIKit
 class ListViewController: UITableViewController,
                             NSXMLParserDelegate {
     
+    enum ListViewControllerRSSType {
+        case ListViewControllerRSSTypeBNR
+        case ListViewControllerRSSTypeApple
+    }
+    
     // - Properties
     
     
@@ -122,25 +127,6 @@ class ListViewController: UITableViewController,
         webViewController.listViewController(self, handleObject: entry) //send protocol message
     }
     
-    /*
-    func fetchRSSFeedCompletionHandle(obj: RSSChannel!, err: NSError!) {
-        if err == nil {
-            
-            channel = obj
-            self.tableView.reloadData()
-            
-        } else {
-            
-            let errorString = "Fetch failed: \(err.localizedDescription)"
-            let alertView = UIAlertView()
-            alertView.title = "Warning"
-            alertView.message = errorString
-            alertView.addButtonWithTitle("Dismiss")
-            alertView.show()
-            
-        }
-    }
-    */
     
     func fetchEntries() {
      
@@ -159,71 +145,6 @@ class ListViewController: UITableViewController,
         })
     }
     
-    
-    // - XML Data
-    
-    /*
-    func connectionDidFinishLoading(connection: NSURLConnection!) {
-        //var xmlCheck = NSString(data: xmlData, encoding: NSUTF8StringEncoding)
-        //println("xmlCheck = \(xmlCheck)")
-        
-        /*
-        let parser = NSXMLParser(data: xmlData)
-        parser.delegate = self
-        parser.parse() // blocking..
-        self.xmlData = nil
-        self.connection = nil
-        self.tableView.reloadData()
-        */
-        
-        //println("\(channel) --------------------\n \(channel?.title) ========================\n \(channel?.infoString)")
-    }
-    
-    
-    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
-        xmlData!.appendData(data)
-    }
-    
-    
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
-        self.connection = nil
-        self.xmlData = nil
-        var errorString = "Fetch failed: \(error.localizedDescription)"
-        
-        if deviceVersionIs8_0() {
-            //var alertController = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
-            //alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
-            //self.presentViewController(alertController, animated: true, completion: nil)
-        } else {
-            let alertView = UIAlertView()//(title: "Fetch Failed", message: errorString, delegate: self, cancelButtonTitle: "dismiss")
-            alertView.title = "Warning"
-            alertView.message = errorString
-            alertView.addButtonWithTitle("Dismiss")
-            alertView.show()
-        }
-    }
-
-    
-    // - NSXMLParserDelegate
-    
-    
-    func parser(parser: NSXMLParser!,
-        didStartElement elementName: String!,
-        namespaceURI: String!,
-        qualifiedName qName: String!,
-        attributes attributeDict: NSDictionary!) {
-            
-            //println("\(self) found \(elementName)")
-            
-            if elementName == "channel" {
-                channel = RSSChannel()
-                self.channel!.parentParserDelegate = self
-                parser.delegate = channel!
-            }
-        
-    }
-
-    */
 }
 
 

@@ -11,6 +11,7 @@ import Foundation
 
 class BNRFeedStore: NSObject {
     
+    
     // - Singleton
     
     struct Static {
