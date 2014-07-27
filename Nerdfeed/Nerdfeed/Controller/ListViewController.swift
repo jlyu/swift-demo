@@ -11,15 +11,16 @@ import UIKit
 class ListViewController: UITableViewController,
                             NSXMLParserDelegate {
     
-    enum ListViewControllerRSSType {
-        case ListViewControllerRSSTypeBNR
-        case ListViewControllerRSSTypeApple
+    enum ListViewControllerRSSType: Int {
+        case ListViewControllerRSSTypeBNR = 0
+        case ListViewControllerRSSTypeApple = 1
     }
     
     // - Properties
     
     
     var channel: RSSChannel?
+    var rssType: ListViewControllerRSSType = .ListViewControllerRSSTypeBNR
     var webViewController: WebViewController!
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -31,6 +32,13 @@ class ListViewController: UITableViewController,
                                                 target: self,
                                                 action: Selector("showInfo:"))
             self.navigationItem.rightBarButtonItem = barButtonItem
+            
+            // add UISegmentedControl
+            var rssTypeControl = UISegmentedControl(items: ["BNR", "Apple"])
+            rssTypeControl.selectedSegmentIndex = 0
+            rssTypeControl.segmentedControlStyle = .Bar
+            rssTypeControl.addTarget(self, action: Selector("changeType:"), forControlEvents: UIControlEvents.ValueChanged)
+            self.navigationItem.titleView = rssTypeControl
             
             self.fetchEntries()
         }
@@ -63,7 +71,14 @@ class ListViewController: UITableViewController,
         
         channelViewController.listViewController(self, handleObject: self.channel!)
     }
-
+    
+    
+    func changeType(sender: AnyObject?) {
+        var rssTypeControl: UISegmentedControl = sender! as UISegmentedControl
+        let segmentIndex = rssTypeControl.selectedSegmentIndex
+        rssType = ListViewControllerRSSType.fromRaw(segmentIndex)!
+        self.fetchEntries()
+    }
     
     
     // - View
