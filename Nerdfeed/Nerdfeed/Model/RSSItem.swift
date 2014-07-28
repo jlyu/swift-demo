@@ -32,7 +32,17 @@ class RSSItem: NSObject,
     // - Conform JSONSerializable
     
     func readFromJSONDictionary(d: NSDictionary) {
+        var title: NSDictionary = d.objectForKey("title") as NSDictionary
+        self.title = title.objectForKey("label") as String
         
+        
+        var links: NSArray = d.objectForKey("link") as NSArray
+        if links.count > 1 {
+            var tmpDict: NSDictionary = links.objectAtIndex(1) as NSDictionary
+            var sampleDict = tmpDict.objectForKey("attributes") as NSDictionary
+            
+            self.link = sampleDict.objectForKey("href") as String
+        }
     }
     
     

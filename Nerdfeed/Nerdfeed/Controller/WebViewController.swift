@@ -52,6 +52,7 @@ class WebViewController: UIViewController,
     
     func splitViewController(svc: UISplitViewController!, willShowViewController aViewController: UIViewController!, invalidatingBarButtonItem barButtonItem: UIBarButtonItem!) {
         
+        // TODO: EXC_BAD_INSTRUCTION
         if barButtonItem == self.navigationItem.leftBarButtonItem {
             self.navigationItem.leftBarButtonItem = nil
         }

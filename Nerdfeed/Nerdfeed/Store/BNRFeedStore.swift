@@ -42,6 +42,7 @@ class BNRFeedStore: NSObject {
         connection.completionBlock = block
         connection.xmlRootObject = channel
         
+        
         connection.start()
     }
     
@@ -53,7 +54,7 @@ class BNRFeedStore: NSObject {
         var channel = RSSChannel()
         var connection = BNRConnection(request: request)
         connection.completionBlock = block
-        connection.xmlRootObject = channel
+        connection.jsonRootObject = channel
         
         connection.start()
     }

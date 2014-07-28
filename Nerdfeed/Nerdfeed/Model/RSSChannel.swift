@@ -72,7 +72,7 @@ class RSSChannel: NSObject,
     func readFromJSONDictionary(d: NSDictionary) {
         
         var feed: NSDictionary = d.objectForKey("feed") as NSDictionary
-        title = feed["title"] as String
+        self.title = "itunes song" //feed.objectForKey("title") as String // FIX
         
         var entries: NSArray = feed.objectForKey("entry") as NSArray
         for entry: AnyObject in entries {

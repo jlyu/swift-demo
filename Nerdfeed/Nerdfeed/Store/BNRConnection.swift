@@ -64,19 +64,31 @@ class BNRConnection: NSObject,
 
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         
+        var rootObject: RSSChannel? = nil
+        
         if xmlRootObject != nil {
             let parser = NSXMLParser(data: container)
             parser.delegate = xmlRootObject
             xmlRootObject!.parentParserDelegate = self
             
             parser.parse()
+            rootObject = xmlRootObject
             
-            if completionBlock != nil {  // ???
-                self.completionBlock(xmlRootObject, nil)
-            }
-            
-            sharedConnectionList.removeObject(self)
+        } else if jsonRootObject != nil {
+            var err: AutoreleasingUnsafePointer<NSError?> = nil
+            let d: NSDictionary = NSJSONSerialization.JSONObjectWithData(container,
+                                                                            options: NSJSONReadingOptions.MutableContainers,
+                                                                            error: err) as NSDictionary
+            jsonRootObject!.readFromJSONDictionary(d)
+            rootObject = jsonRootObject
         }
+        
+        if completionBlock != nil {  // ???
+            self.completionBlock(rootObject, nil)
+        }
+            
+        sharedConnectionList.removeObject(self)
+        
     }
     
     
