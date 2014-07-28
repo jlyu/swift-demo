@@ -11,6 +11,7 @@ import Foundation
 
 class BNRFeedStore: NSObject {
     
+    
     // - Singleton
     
     struct Static {
@@ -40,6 +41,20 @@ class BNRFeedStore: NSObject {
         var connection: BNRConnection = BNRConnection(request: request)
         connection.completionBlock = block
         connection.xmlRootObject = channel
+        
+        
+        connection.start()
+    }
+    
+    func fetchTopSongs(#count: Int, withCompletion block: (obj: RSSChannel!, err: NSError!)->Void ) {
+        let requestString = "http://itunes.apple.com/jp/rss/topsongs/limit=\(count)/json" // <- xml
+        let URL = NSURL(string: requestString)
+        let request = NSURLRequest(URL: URL)
+        
+        var channel = RSSChannel()
+        var connection = BNRConnection(request: request)
+        connection.completionBlock = block
+        connection.jsonRootObject = channel
         
         connection.start()
     }

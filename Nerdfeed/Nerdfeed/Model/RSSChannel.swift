@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class RSSChannel: NSObject,
-                  NSXMLParserDelegate {
+                  NSXMLParserDelegate, JSONSerializable {
     
     // - Proporties
     
@@ -32,6 +32,9 @@ class RSSChannel: NSObject,
     let descriptionTag = "description"
     let itemTag = "item"
     let channelTag = "channel"
+    let entryTag = "entry"
+    //let feedTag:String = "feed"
+
     
     
     // - Method
@@ -62,6 +65,22 @@ class RSSChannel: NSObject,
         }
         
     }
+    
+    
+    // - Conform JSONSerializable
+    
+    func readFromJSONDictionary(d: NSDictionary) {
+        
+        var feed: NSDictionary = d.objectForKey("feed") as NSDictionary
+        self.title = "itunes song" //feed.objectForKey("title") as String // FIX
+        
+        var entries: NSArray = feed.objectForKey("entry") as NSArray
+        for entry: AnyObject in entries {
+            var item = RSSItem()
+            item.readFromJSONDictionary(entry as NSDictionary)
+            items.append(item)
+        }
+    }
 
     
     
@@ -78,7 +97,7 @@ class RSSChannel: NSObject,
                 parseTag = elementName
             } else if elementName == descriptionTag {
                 parseTag = elementName
-            } else if elementName == itemTag {
+            } else if (elementName == itemTag) || (elementName == entryTag) {
                 var entry = RSSItem()
                 entry.parentParserDelegate = self
                 parser.delegate = entry
