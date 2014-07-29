@@ -19,18 +19,12 @@ class RSSChannel: NSObject, NSCoding,
     var title: String = String()
     var infoString: String = String()
     var items: Array<RSSItem> = Array()
-    var topSongsCacheDate: NSDate {
-        get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("topSongsCacheDate") as NSDate
-        }
-        set(newCacheDate) {
-            NSUserDefaults.standardUserDefaults().setObject(newCacheDate, forKey: "topSongsCacheDate")
-        }
-    }
+
     
     //var currentString: String = String()
     
     init() {
+        //items = []
         super.init()
     }
     
@@ -145,16 +139,21 @@ class RSSChannel: NSObject, NSCoding,
     
     
     func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encodeObject(items, forKey: "items")
+        
+        aCoder.encodeObject(items.bridgeToObjectiveC(), forKey: "items")
         aCoder.encodeObject(title, forKey: "title")
         aCoder.encodeObject(infoString, forKey: "infoString")
+        
     }
     
     
     init(coder aDecoder: NSCoder!) {
-        items = aDecoder.decodeObjectForKey("items") as Array<RSSItem>
-        title = aDecoder.decodeObjectForKey("title") as String
-        infoString = aDecoder.decodeObjectForKey("infoString") as String
+        super.init()
+        if self != nil {
+            items = aDecoder.decodeObjectForKey("items") as Array<RSSItem>
+            title = aDecoder.decodeObjectForKey("title") as String
+            infoString = aDecoder.decodeObjectForKey("infoString") as String
+        }
     }
 
     

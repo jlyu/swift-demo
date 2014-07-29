@@ -100,8 +100,11 @@ class RSSItem: NSObject, NSCoding,
     
     
     init(coder aDecoder: NSCoder!) {
-        title = aDecoder.decodeObjectForKey("title") as String
-        link = aDecoder.decodeObjectForKey("link") as String
+        super.init()
+        if self != nil {
+            title = aDecoder.decodeObjectForKey("title") as String
+            link = aDecoder.decodeObjectForKey("link") as String
+        }
     }
 
     

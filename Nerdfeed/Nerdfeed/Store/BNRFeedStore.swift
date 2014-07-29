@@ -29,6 +29,20 @@ class BNRFeedStore: NSObject {
     }
     
     
+    // - Properties
+    
+    
+    var topSongsCacheDate: NSDate {
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey("topSongsCacheDate") as NSDate
+        }
+        set(newCacheDate) {
+            NSUserDefaults.standardUserDefaults().setObject(newCacheDate, forKey: "topSongsCacheDate")
+        }
+    }
+    
+    
+    
     // - Method
     
     //typealias fetchRSSFeedWithCompletionHandler = (obj: RSSChannel!, err: NSError!) -> Void
@@ -47,13 +61,30 @@ class BNRFeedStore: NSObject {
     }
     
     func fetchTopSongs(#count: Int, withCompletion block: (obj: RSSChannel!, err: NSError!)->Void ) {
+        
+        var cachePath: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory,
+                                                                    NSSearchPathDomainMask.UserDomainMask,
+                                                                    true)[0] as String
+        cachePath = cachePath.stringByAppendingPathComponent("apple.archive")
+        
+        
         let requestString = "http://itunes.apple.com/jp/rss/topsongs/limit=\(count)/json" // <- xml
         let URL = NSURL(string: requestString)
         let request = NSURLRequest(URL: URL)
         
         var channel = RSSChannel()
         var connection = BNRConnection(request: request)
-        connection.completionBlock = block
+        
+        
+        connection.completionBlock =  { obj, err in
+            if err == nil {
+                //self.topSongsCacheDate = NSDate()
+                NSKeyedArchiver.archiveRootObject(obj, toFile: cachePath)
+            }
+            block(obj: obj, err: err)
+        }
+
+        
         connection.jsonRootObject = channel
         
         connection.start()
