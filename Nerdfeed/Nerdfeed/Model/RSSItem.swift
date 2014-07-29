@@ -9,7 +9,7 @@
 import UIKit
 
 
-class RSSItem: NSObject,
+class RSSItem: NSObject, NSCoding,
                 NSXMLParserDelegate, JSONSerializable {
     
     var parentParserDelegate: RSSChannel?
@@ -88,6 +88,22 @@ class RSSItem: NSObject,
                 parser.delegate = parentParserDelegate!
             }
     }
+    
+    
+    // - Archiving
+    
+    
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encodeObject(title, forKey: "title")
+        aCoder.encodeObject(link, forKey: "link")
+    }
+    
+    
+    init(coder aDecoder: NSCoder!) {
+        title = aDecoder.decodeObjectForKey("title") as String
+        link = aDecoder.decodeObjectForKey("link") as String
+    }
+
     
     
 }

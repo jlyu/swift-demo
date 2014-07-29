@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class RSSChannel: NSObject,
+class RSSChannel: NSObject, NSCoding,
                   NSXMLParserDelegate, JSONSerializable {
     
     // - Proporties
@@ -130,6 +130,25 @@ class RSSChannel: NSObject,
                 self.trimItemTitles()
             }
     }
+    
+    
+    
+    // - Archiving
+    
+    
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encodeObject(items, forKey: "items")
+        aCoder.encodeObject(title, forKey: "title")
+        aCoder.encodeObject(infoString, forKey: "infoString")
+    }
+    
+    
+    init(coder aDecoder: NSCoder!) {
+        items = aDecoder.decodeObjectForKey("items") as Array<RSSItem>
+        title = aDecoder.decodeObjectForKey("title") as String
+        infoString = aDecoder.decodeObjectForKey("infoString") as String
+    }
+
     
     
 
