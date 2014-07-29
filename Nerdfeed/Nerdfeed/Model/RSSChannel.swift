@@ -19,8 +19,16 @@ class RSSChannel: NSObject, NSCoding,
     var title: String = String()
     var infoString: String = String()
     var items: Array<RSSItem> = Array()
+    var topSongsCacheDate: NSDate {
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey("topSongsCacheDate") as NSDate
+        }
+        set(newCacheDate) {
+            NSUserDefaults.standardUserDefaults().setObject(newCacheDate, forKey: "topSongsCacheDate")
+        }
+    }
     
-    var currentString: String = String()
+    //var currentString: String = String()
     
     init() {
         super.init()
