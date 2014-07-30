@@ -122,4 +122,14 @@ extension Array {
             self.removeAtIndex(index!)
         }
     }
+    
+    
+    func containsObject(object: AnyObject!) -> Bool {
+        if self.isEmpty {
+            return false
+        }
+        
+        let array: NSArray = self.bridgeToObjectiveC()
+        return array.containsObject(object)
+    }
 }

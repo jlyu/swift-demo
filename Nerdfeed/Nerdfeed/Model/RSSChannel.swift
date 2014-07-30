@@ -61,11 +61,17 @@ class RSSChannel: NSObject, NSCoding,
                     
                     item.title = itemTitle
                 }
-                
             }
-            
         }
-        
+    }
+    
+    
+    func addItemsFromChannel(otherChannel: RSSChannel) {
+        for item in otherChannel.items {
+            if !items.containsObject(item) {
+                items.append(item)
+            }
+        }
     }
     
     

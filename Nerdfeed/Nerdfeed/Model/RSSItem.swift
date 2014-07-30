@@ -29,6 +29,20 @@ class RSSItem: NSObject, NSCoding,
     let entryTag = "entry"
     
     
+    // - Method
+    
+    
+    override func isEqual(object: AnyObject!) -> Bool {
+        
+        if !object.isKindOfClass(RSSItem) {
+            return false
+        }
+        
+        return self.link == object.link
+    }
+
+    
+    
     // - Conform JSONSerializable
     
     func readFromJSONDictionary(d: NSDictionary) {

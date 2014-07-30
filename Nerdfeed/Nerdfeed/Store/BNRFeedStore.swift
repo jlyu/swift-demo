@@ -82,6 +82,7 @@ class BNRFeedStore: NSObject {
                 println("load topSongs cache")
                 var cacheChannel = NSKeyedUnarchiver.unarchiveObjectWithFile(cachePath) as RSSChannel
                 if cacheChannel != nil {
+                    
                     NSOperationQueue.mainQueue().addOperationWithBlock({() in
                         block(obj: cacheChannel, err: nil)
                     })
