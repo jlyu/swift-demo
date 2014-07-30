@@ -76,7 +76,8 @@ class ListViewController: UITableViewController,
         }
         
         if rssType == .ListViewControllerRSSTypeBNR {
-            BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: completionBlock)
+            self.channel = BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: completionBlock)
+            self.tableView.reloadData()
         } else if rssType == .ListViewControllerRSSTypeApple {
             BNRFeedStore.sharedStore.fetchTopSongs(count: 10, withCompletion: completionBlock)
         }

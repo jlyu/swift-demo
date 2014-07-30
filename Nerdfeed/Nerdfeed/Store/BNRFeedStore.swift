@@ -45,26 +45,50 @@ class BNRFeedStore: NSObject {
     
     // - Method
     
+    
     //typealias fetchRSSFeedWithCompletionHandler = (obj: RSSChannel!, err: NSError!) -> Void
-    func fetchRSSFeedWithCompletion(completionBlock block: (obj: RSSChannel!, err: NSError!) -> Void) {
+    func fetchRSSFeedWithCompletion(completionBlock block: (obj: RSSChannel!, err: NSError!) -> Void) -> RSSChannel {
+        
+        var cachePath: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory,
+                                    NSSearchPathDomainMask.UserDomainMask,true)[0] as String
+        cachePath = cachePath.stringByAppendingPathComponent("nerd.archive")
+        // cached nerd RSSChannel Data
+        var cachedChannel = NSKeyedUnarchiver.unarchiveObjectWithFile(cachePath) as? RSSChannel
+        if !cachedChannel {
+            cachedChannel = RSSChannel() // new
+        }
+        
+        var channelCopy: RSSChannel = cachedChannel?.copy() as RSSChannel
+        
         
         let requestURL = NSURL(string: "http://forums.bignerdranch.com/smartfeed.php?limit=1_DAY&sort_by=standard&feed_type=RSS2.0&feed_style=COMPACT")
         let request = NSURLRequest(URL: requestURL)
-        
-        var channel: RSSChannel = RSSChannel()
         var connection: BNRConnection = BNRConnection(request: request)
-        connection.completionBlock = block
+        var channel = RSSChannel()
+        
+        
+        connection.completionBlock = { obj, err in
+            if err == nil {
+                //cachedChannel!.addItemsFromChannel(obj)
+                channelCopy.addItemsFromChannel(obj)
+                //NSKeyedArchiver.archiveRootObject(cachedChannel, toFile: cachePath)
+                NSKeyedArchiver.archiveRootObject(channelCopy, toFile: cachePath)
+            }
+            
+            block(obj: channelCopy, err: err)
+        }
+        
         connection.xmlRootObject = channel
-        
-        
         connection.start()
+        
+        return cachedChannel!
     }
+    
     
     func fetchTopSongs(#count: Int, withCompletion block: (obj: RSSChannel!, err: NSError!)->Void ) {
         
         var cachePath: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory,
-                                                                    NSSearchPathDomainMask.UserDomainMask,
-                                                                    true)[0] as String
+                                    NSSearchPathDomainMask.UserDomainMask, true)[0] as String
         cachePath = cachePath.stringByAppendingPathComponent("apple.archive")
         
         

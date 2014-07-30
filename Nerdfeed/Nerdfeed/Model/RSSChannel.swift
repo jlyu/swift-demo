@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class RSSChannel: NSObject, NSCoding,
+class RSSChannel: NSObject, NSCoding, NSCopying,
                   NSXMLParserDelegate, JSONSerializable {
     
     // - Proporties
@@ -168,9 +168,16 @@ class RSSChannel: NSObject, NSCoding,
             infoString = aDecoder.decodeObjectForKey("infoString") as String
         }
     }
+    
+    
+    func copyWithZone(zone: NSZone) -> AnyObject! {
+        var copy = RSSChannel()
+        copy.title = self.title
+        copy.infoString = self.infoString
+        copy.items = self.items.copy() //??
+        return copy
+    }
 
     
     
-
-
 }
