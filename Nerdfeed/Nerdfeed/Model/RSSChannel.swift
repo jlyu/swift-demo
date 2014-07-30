@@ -51,7 +51,7 @@ class RSSChannel: NSObject, NSCoding,
                 var result: NSTextCheckingResult = matches[0] as NSTextCheckingResult
                 var range: NSRange = result.range
                 
-                println("Match at {\(range.location),\(range.length)} for \(item.title)")
+                //println("Match at {\(range.location),\(range.length)} for \(item.title)")
                 
                 if result.numberOfRanges == 2 {
                     let r: NSRange = result.rangeAtIndex(1)

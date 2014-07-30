@@ -25,16 +25,16 @@ class BNRFeedStore: NSObject {
     }
     
     init() {
-        
+        super.init()
     }
     
     
     // - Properties
     
     
-    var topSongsCacheDate: NSDate {
+    var topSongsCacheDate: NSDate? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey("topSongsCacheDate") as NSDate
+            return NSUserDefaults.standardUserDefaults().objectForKey("topSongsCacheDate") as? NSDate
         }
         set(newCacheDate) {
             NSUserDefaults.standardUserDefaults().setObject(newCacheDate, forKey: "topSongsCacheDate")
@@ -75,10 +75,23 @@ class BNRFeedStore: NSObject {
         var channel = RSSChannel()
         var connection = BNRConnection(request: request)
         
+        // load cache
+        if self.topSongsCacheDate {
+            var cacheInterval = self.topSongsCacheDate!.timeIntervalSinceNow
+            if cacheInterval > -300 {
+                println("load topSongs cache")
+                var cacheChannel = NSKeyedUnarchiver.unarchiveObjectWithFile(cachePath) as RSSChannel
+                if cacheChannel != nil {
+                    block(obj: cacheChannel, err: nil)
+                    return
+                }
+            }
+        }
+        
         
         connection.completionBlock =  { obj, err in
             if err == nil {
-                //self.topSongsCacheDate = NSDate()
+                self.topSongsCacheDate = NSDate()
                 NSKeyedArchiver.archiveRootObject(obj, toFile: cachePath)
             }
             block(obj: obj, err: err)
