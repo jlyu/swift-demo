@@ -58,6 +58,8 @@ class ListViewController: UITableViewController,
         
         var completionBlock: (obj: RSSChannel!, err: NSError!)-> Void = { obj, err in
             
+            println("2. CompletionBlock called")
+            
             self.navigationItem.titleView = currentTitleView
             
             if err == nil {
@@ -78,6 +80,8 @@ class ListViewController: UITableViewController,
         } else if rssType == .ListViewControllerRSSTypeApple {
             BNRFeedStore.sharedStore.fetchTopSongs(count: 10, withCompletion: completionBlock)
         }
+        
+        println("1. End of fetchEntries()")
     }
 
     
