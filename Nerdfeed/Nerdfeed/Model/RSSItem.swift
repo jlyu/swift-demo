@@ -15,6 +15,12 @@ class RSSItem: NSObject, NSCoding,
     var parentParserDelegate: RSSChannel?
     var title: String = String()
     var link: String = String()
+    var publicationDate: NSDate?
+    var publication: String = String()
+    
+    //class var dateFormatter: NSDateFormatter? {
+    //    return nil
+    //}
     
     init()  {
         super.init()
@@ -27,6 +33,7 @@ class RSSItem: NSObject, NSCoding,
     let linkTag = "link"
     let itemTag = "item"
     let entryTag = "entry"
+    let pubDateTag = "pubDate"
     
     
     // - Method
@@ -74,8 +81,9 @@ class RSSItem: NSObject, NSCoding,
                 parseTag = elementName
             } else if elementName == linkTag {
                 parseTag = elementName
+            } else if elementName == pubDateTag {
+                parseTag = elementName
             }
-            
     }
     
     func parser(parser: NSXMLParser!, foundCharacters string: String!) {
@@ -86,6 +94,8 @@ class RSSItem: NSObject, NSCoding,
             self.title += string
         } else if parseTag? == linkTag {
             self.link += string
+        } else if parseTag? == pubDateTag {  // ??
+            self.publication += string
         }
         
     }
@@ -95,6 +105,12 @@ class RSSItem: NSObject, NSCoding,
         didEndElement elementName: String!,
         namespaceURI: String!,
         qualifiedName qName: String!) {
+            
+            if (elementName == pubDateTag) {
+                var dateFormatter: NSDateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss z"
+                publicationDate = dateFormatter.dateFromString(publication)
+            }
             
             parseTag = nil
             
@@ -110,6 +126,7 @@ class RSSItem: NSObject, NSCoding,
     func encodeWithCoder(aCoder: NSCoder!) {
         aCoder.encodeObject(title, forKey: "title")
         aCoder.encodeObject(link, forKey: "link")
+        aCoder.encodeObject(publicationDate, forKey: "publicationDate")
     }
     
     
@@ -118,6 +135,7 @@ class RSSItem: NSObject, NSCoding,
         if self != nil {
             title = aDecoder.decodeObjectForKey("title") as String
             link = aDecoder.decodeObjectForKey("link") as String
+            publicationDate = aDecoder.decodeObjectForKey("publicationDate") as? NSDate
         }
     }
 
