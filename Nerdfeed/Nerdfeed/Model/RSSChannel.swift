@@ -72,6 +72,13 @@ class RSSChannel: NSObject, NSCoding,
                 items.append(item)
             }
         }
+        // sort item by date
+        items.sort({ (d1: RSSItem, d2: RSSItem) -> Bool in
+            let date1 = d1.publicationDate as NSDate
+            let date2 = d2.publicationDate as NSDate
+            return date1.compare(date2) == NSComparisonResult.OrderedDescending
+        })
+        
     }
     
     
