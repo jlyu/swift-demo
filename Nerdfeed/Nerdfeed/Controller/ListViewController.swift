@@ -50,7 +50,15 @@ class ListViewController: UITableViewController,
     
     func fetchEntries() {
         
+        var currentTitleView = navigationItem.titleView
+        var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        navigationItem.titleView = activityView
+        activityView.startAnimating()
+        
+        
         var completionBlock: (obj: RSSChannel!, err: NSError!)-> Void = { obj, err in
+            
+            self.navigationItem.titleView = currentTitleView
             
             if err == nil {
                 self.channel = obj
