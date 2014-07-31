@@ -9,12 +9,18 @@
 import UIKit
 
 
-class RSSItem: NSObject,
+class RSSItem: NSObject, NSCoding,
                 NSXMLParserDelegate, JSONSerializable {
     
     var parentParserDelegate: RSSChannel?
     var title: String = String()
     var link: String = String()
+    var publicationDate: NSDate?
+    var publication: String = String()
+    
+    //class var dateFormatter: NSDateFormatter? {
+    //    return nil
+    //}
     
     init()  {
         super.init()
@@ -27,6 +33,21 @@ class RSSItem: NSObject,
     let linkTag = "link"
     let itemTag = "item"
     let entryTag = "entry"
+    let pubDateTag = "pubDate"
+    
+    
+    // - Method
+    
+    
+    override func isEqual(object: AnyObject!) -> Bool {
+        
+        if !object.isKindOfClass(RSSItem) {
+            return false
+        }
+        
+        return self.link == object.link
+    }
+
     
     
     // - Conform JSONSerializable
@@ -60,8 +81,9 @@ class RSSItem: NSObject,
                 parseTag = elementName
             } else if elementName == linkTag {
                 parseTag = elementName
+            } else if elementName == pubDateTag {
+                parseTag = elementName
             }
-            
     }
     
     func parser(parser: NSXMLParser!, foundCharacters string: String!) {
@@ -72,6 +94,8 @@ class RSSItem: NSObject,
             self.title += string
         } else if parseTag? == linkTag {
             self.link += string
+        } else if parseTag? == pubDateTag {  // ??
+            self.publication += string
         }
         
     }
@@ -82,12 +106,39 @@ class RSSItem: NSObject,
         namespaceURI: String!,
         qualifiedName qName: String!) {
             
+            if (elementName == pubDateTag) {
+                var dateFormatter: NSDateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss z"
+                publicationDate = dateFormatter.dateFromString(publication)
+            }
+            
             parseTag = nil
             
             if (elementName == itemTag) || (elementName == entryTag) {
                 parser.delegate = parentParserDelegate!
             }
     }
+    
+    
+    // - Archiving
+    
+    
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encodeObject(title, forKey: "title")
+        aCoder.encodeObject(link, forKey: "link")
+        aCoder.encodeObject(publicationDate, forKey: "publicationDate")
+    }
+    
+    
+    init(coder aDecoder: NSCoder!) {
+        super.init()
+        if self != nil {
+            title = aDecoder.decodeObjectForKey("title") as String
+            link = aDecoder.decodeObjectForKey("link") as String
+            publicationDate = aDecoder.decodeObjectForKey("publicationDate") as? NSDate
+        }
+    }
+
     
     
 }

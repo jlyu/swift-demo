@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class RSSChannel: NSObject,
+class RSSChannel: NSObject, NSCoding, NSCopying,
                   NSXMLParserDelegate, JSONSerializable {
     
     // - Proporties
@@ -19,10 +19,12 @@ class RSSChannel: NSObject,
     var title: String = String()
     var infoString: String = String()
     var items: Array<RSSItem> = Array()
+
     
-    var currentString: String = String()
+    //var currentString: String = String()
     
     init() {
+        //items = []
         super.init()
     }
     
@@ -49,7 +51,7 @@ class RSSChannel: NSObject,
                 var result: NSTextCheckingResult = matches[0] as NSTextCheckingResult
                 var range: NSRange = result.range
                 
-                println("Match at {\(range.location),\(range.length)} for \(item.title)")
+                //println("Match at {\(range.location),\(range.length)} for \(item.title)")
                 
                 if result.numberOfRanges == 2 {
                     let r: NSRange = result.rangeAtIndex(1)
@@ -59,10 +61,23 @@ class RSSChannel: NSObject,
                     
                     item.title = itemTitle
                 }
-                
             }
-            
         }
+    }
+    
+    
+    func addItemsFromChannel(otherChannel: RSSChannel) {
+        for item in otherChannel.items {
+            if !items.containsObject(item) {
+                items.append(item)
+            }
+        }
+        // sort item by date
+        items.sort({ (d1: RSSItem, d2: RSSItem) -> Bool in
+            let date1 = d1.publicationDate as NSDate
+            let date2 = d2.publicationDate as NSDate
+            return date1.compare(date2) == NSComparisonResult.OrderedDescending
+        })
         
     }
     
@@ -132,6 +147,37 @@ class RSSChannel: NSObject,
     }
     
     
+    
+    // - Archiving
+    
+    
+    func encodeWithCoder(aCoder: NSCoder!) {
+        
+        aCoder.encodeObject(items.bridgeToObjectiveC(), forKey: "items")
+        aCoder.encodeObject(title, forKey: "title")
+        aCoder.encodeObject(infoString, forKey: "infoString")
+        
+    }
+    
+    
+    init(coder aDecoder: NSCoder!) {
+        super.init()
+        if self != nil {
+            items = aDecoder.decodeObjectForKey("items") as Array<RSSItem>
+            title = aDecoder.decodeObjectForKey("title") as String
+            infoString = aDecoder.decodeObjectForKey("infoString") as String
+        }
+    }
+    
+    
+    func copyWithZone(zone: NSZone) -> AnyObject! {
+        var copy = RSSChannel()
+        copy.title = self.title
+        copy.infoString = self.infoString
+        copy.items = self.items.copy() //??
+        return copy
+    }
 
-
+    
+    
 }

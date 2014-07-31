@@ -50,7 +50,17 @@ class ListViewController: UITableViewController,
     
     func fetchEntries() {
         
+        var currentTitleView = navigationItem.titleView
+        var activityView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        navigationItem.titleView = activityView
+        activityView.startAnimating()
+        
+        
         var completionBlock: (obj: RSSChannel!, err: NSError!)-> Void = { obj, err in
+            
+            println("2. CompletionBlock called")
+            
+            self.navigationItem.titleView = currentTitleView
             
             if err == nil {
                 self.channel = obj
@@ -66,10 +76,13 @@ class ListViewController: UITableViewController,
         }
         
         if rssType == .ListViewControllerRSSTypeBNR {
-            BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: completionBlock)
+            self.channel = BNRFeedStore.sharedStore.fetchRSSFeedWithCompletion(completionBlock: completionBlock)
+            self.tableView.reloadData()
         } else if rssType == .ListViewControllerRSSTypeApple {
             BNRFeedStore.sharedStore.fetchTopSongs(count: 10, withCompletion: completionBlock)
         }
+        
+        println("1. End of fetchEntries()")
     }
 
     
@@ -149,6 +162,13 @@ class ListViewController: UITableViewController,
         cell.authorLabel.text = item.title
         cell.titleLabel.text = item.link
         cell.catagoryLabel.text = "Pro"
+        
+        if BNRFeedStore.sharedStore.hasItemBennRead(item) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
         return cell
     }
     
@@ -164,6 +184,9 @@ class ListViewController: UITableViewController,
         }
         
         var entry: RSSItem = channel!.items[indexPath.row]
+        BNRFeedStore.sharedStore.markItemAsRead(entry)
+        
+        tableView.cellForRowAtIndexPath(indexPath).accessoryType = UITableViewCellAccessoryType.Checkmark
         
         webViewController.listViewController(self, handleObject: entry) //send protocol message
     }
