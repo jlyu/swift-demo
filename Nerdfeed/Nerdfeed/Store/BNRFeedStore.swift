@@ -157,12 +157,29 @@ class BNRFeedStore: NSObject {
 
 
     func markItemAsRead(item: RSSItem) {
+        if hasItemBennRead(item) {
+            return
+        }
         
+        var obj: NSManagedObject = NSEntityDescription.insertNewObjectForEntityForName("Link",
+                                                        inManagedObjectContext: context) as NSManagedObject
+        obj.setValue(item.link, forKey: "urlString")
+        context.save(nil)
     }
+    
     
     func hasItemBennRead(item: RSSItem) -> Bool {
         
-        return true
+        var request: NSFetchRequest = NSFetchRequest(entityName: "Link")
+        var predicate = NSPredicate(format: "urlString like \(item.link)")
+        request.predicate = predicate
+        
+        var entries = context.executeFetchRequest(request, error: nil)
+        if entries.count > 0 {
+            return true
+        }
+        
+        return false
     }
     
     
