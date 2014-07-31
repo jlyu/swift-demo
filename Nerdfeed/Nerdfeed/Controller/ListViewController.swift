@@ -162,6 +162,13 @@ class ListViewController: UITableViewController,
         cell.authorLabel.text = item.title
         cell.titleLabel.text = item.link
         cell.catagoryLabel.text = "Pro"
+        
+        if BNRFeedStore.sharedStore.hasItemBennRead(item) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
         return cell
     }
     
@@ -177,6 +184,9 @@ class ListViewController: UITableViewController,
         }
         
         var entry: RSSItem = channel!.items[indexPath.row]
+        BNRFeedStore.sharedStore.markItemAsRead(entry)
+        
+        tableView.cellForRowAtIndexPath(indexPath).accessoryType = UITableViewCellAccessoryType.Checkmark
         
         webViewController.listViewController(self, handleObject: entry) //send protocol message
     }
