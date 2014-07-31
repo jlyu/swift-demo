@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class BNRFeedStore: NSObject {
     
@@ -26,10 +27,33 @@ class BNRFeedStore: NSObject {
     
     init() {
         super.init()
+        
+        if self != nil {
+            model = NSManagedObjectModel.mergedModelFromBundles(nil)
+            var persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+            
+            var err: NSError? = nil
+            var dbPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,
+                            NSSearchPathDomainMask.UserDomainMask, true)[0] as String
+            dbPath = dbPath.stringByAppendingPathComponent("feed.db")
+            var dbURL = NSURL(fileURLWithPath: dbPath)
+            
+            if !persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil,
+                                                URL: dbURL, options: nil, error: &err) {
+                    println("Error: \(err!.localizedDescription)")
+            }
+            
+            context = NSManagedObjectContext()
+            context.persistentStoreCoordinator = persistentStoreCoordinator
+            context.undoManager = nil
+        }
     }
     
     
     // - Properties
+    
+    var context: NSManagedObjectContext!
+    var model: NSManagedObjectModel!
     
     
     var topSongsCacheDate: NSDate? {
@@ -132,6 +156,14 @@ class BNRFeedStore: NSObject {
     }
 
 
+    func markItemAsRead(item: RSSItem) {
+        
+    }
+    
+    func hasItemBennRead(item: RSSItem) -> Bool {
+        
+        return true
+    }
     
     
 }
