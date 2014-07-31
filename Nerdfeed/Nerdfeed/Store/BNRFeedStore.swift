@@ -171,7 +171,7 @@ class BNRFeedStore: NSObject {
     func hasItemBennRead(item: RSSItem) -> Bool {
         
         var request: NSFetchRequest = NSFetchRequest(entityName: "Link")
-        var predicate = NSPredicate(format: "urlString like \(item.link)")
+        var predicate: NSPredicate = NSPredicate(format: "urlString like %@", item.link)
         request.predicate = predicate
         
         var entries = context.executeFetchRequest(request, error: nil)
