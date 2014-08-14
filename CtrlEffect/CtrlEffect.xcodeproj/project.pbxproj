@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				361BECE8199CFD6A00935BB8 /* AppDelegate.swift */,
-				361BED05199D012700935BB8 /* TransformControlsViewController.swift */,
 				361BECEA199CFD6A00935BB8 /* ViewController.swift */,
+				361BED05199D012700935BB8 /* TransformControlsViewController.swift */,
 				361BECEC199CFD6A00935BB8 /* Main.storyboard */,
 				361BECEF199CFD6A00935BB8 /* Images.xcassets */,
 				361BECE6199CFD6A00935BB8 /* Supporting Files */,
@@ -401,6 +401,7 @@
 				361BED01199CFD6A00935BB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		361BED02199CFD6A00935BB8 /* Build configuration list for PBXNativeTarget "CtrlEffectTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +410,7 @@
 				361BED04199CFD6A00935BB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
