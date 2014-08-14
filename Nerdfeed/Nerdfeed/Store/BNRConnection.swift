@@ -83,9 +83,9 @@ class BNRConnection: NSObject,
             rootObject = jsonRootObject
         }
         
-        if completionBlock != nil {  // ???
+        //if completionBlock != nil {  // ???
             self.completionBlock(rootObject, nil)
-        }
+        //}
             
         sharedConnectionList.removeObject(self)
         
@@ -93,9 +93,9 @@ class BNRConnection: NSObject,
     
     
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
-        if completionBlock != nil {
+        //if completionBlock != nil {
             self.completionBlock(nil, error)
-        }
+        //}
         
         sharedConnectionList.removeObject(self)
     }

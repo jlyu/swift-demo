@@ -10,9 +10,9 @@ import UIKit
 
 class RSSItemCell: UITableViewCell {
     
-    @IBOutlet var authorLabel : UILabel
-    @IBOutlet var titleLabel : UILabel
-    @IBOutlet var catagoryLabel : UILabel
+    @IBOutlet var authorLabel : UILabel?
+    @IBOutlet var titleLabel : UILabel?
+    @IBOutlet var catagoryLabel : UILabel?
     
     var controller: ListViewController!
 

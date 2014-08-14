@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CtrlEffect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-OV-4IY">
+                                <rect key="frame" x="250" y="211" width="100" height="30"/>
+                                <state key="normal" title="Edit Transform">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Sha-f9-CN4" kind="presentation" id="Eep-xl-lr0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tortoise" translatesAutoresizingMaskIntoConstraints="NO" id="7r5-p8-f8E">
+                                <rect key="frame" x="172" y="38" width="256" height="170"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="7r5-p8-f8E" id="TRi-xv-yac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Transform Controls View Controller-->
+        <scene sceneID="dN6-UO-qpw">
+            <objects>
+                <viewController id="Sha-f9-CN4" customClass="TransformControlsViewController" customModule="CtrlEffect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nU9-9n-YiX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sop-6h-HSs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t1N-Lg-s2U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kW8-1d-Ai3">
+                                <rect key="frame" x="0.0" y="296" width="600" height="304"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rotation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJh-Pf-hvP">
+                                        <rect key="frame" x="16" y="67" width="76" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="8X1-k3-vWX">
+                                        <rect key="frame" x="84" y="63" width="510" height="31"/>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kW8-1d-Ai3" firstAttribute="top" secondItem="nU9-9n-YiX" secondAttribute="bottom" constant="276" id="EHi-kR-gL2"/>
+                            <constraint firstItem="kW8-1d-Ai3" firstAttribute="bottom" secondItem="Sop-6h-HSs" secondAttribute="top" id="SfT-Xf-o7h"/>
+                            <constraint firstItem="kW8-1d-Ai3" firstAttribute="trailing" secondItem="Sop-6h-HSs" secondAttribute="trailing" id="cJH-YM-GTy"/>
+                            <constraint firstItem="kW8-1d-Ai3" firstAttribute="leading" secondItem="Sop-6h-HSs" secondAttribute="leading" id="sLU-xh-2HG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="kW8-1d-Ai3" id="euL-Pn-RLX"/>
+                        <outlet property="rotationSlider" destination="8X1-k3-vWX" id="bI2-d3-cq4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qs4-nT-Llu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="753" y="136"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Tortoise" width="256" height="170"/>
+    </resources>
+</document>

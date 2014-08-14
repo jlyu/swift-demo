@@ -70,14 +70,14 @@ class BNRFeedStore: NSObject {
     // - Method
     
     
-    //typealias fetchRSSFeedWithCompletionHandler = (obj: RSSChannel!, err: NSError!) -> Void
-    func fetchRSSFeedWithCompletion(completionBlock block: (obj: RSSChannel!, err: NSError!) -> Void) -> RSSChannel {
+    typealias fetchRSSFeedWithCompletionHandler = (obj: RSSChannel!, err: NSError!) -> RSSChannel?
+    func fetchRSSFeedWithCompletion(completionBlock block: fetchRSSFeedWithCompletionHandler) {
         
         var cachePath: String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory,
                                     NSSearchPathDomainMask.UserDomainMask,true)[0] as String
         cachePath = cachePath.stringByAppendingPathComponent("nerd.archive")
         // cached nerd RSSChannel Data
-        var cachedChannel = NSKeyedUnarchiver.unarchiveObjectWithFile(cachePath) as? RSSChannel
+        var cachedChannel: RSSChannel? = NSKeyedUnarchiver.unarchiveObjectWithFile(cachePath) as? RSSChannel
         if !cachedChannel {
             cachedChannel = RSSChannel() // new
         }

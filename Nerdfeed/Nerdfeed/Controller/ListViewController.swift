@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ListViewController: UITableViewController,
                             NSXMLParserDelegate {
@@ -36,7 +37,7 @@ class ListViewController: UITableViewController,
             // add UISegmentedControl
             var rssTypeControl = UISegmentedControl(items: ["BNR", "Apple"])
             rssTypeControl.selectedSegmentIndex = 0
-            rssTypeControl.segmentedControlStyle = .Bar
+            //rssTypeControl.segmentedControlStyle = .Bar  // TODO
             rssTypeControl.addTarget(self, action: Selector("changeType:"), forControlEvents: UIControlEvents.ValueChanged)
             self.navigationItem.titleView = rssTypeControl
             
@@ -56,7 +57,7 @@ class ListViewController: UITableViewController,
         activityView.startAnimating()
         
         
-        var completionBlock: (obj: RSSChannel!, err: NSError!)-> Void = { obj, err in
+        var completionBlock: (obj: RSSChannel!, err: NSError!)-> RSSChannel = { obj, err in
             
             println("2. CompletionBlock called")
             
@@ -130,6 +131,7 @@ class ListViewController: UITableViewController,
         self.tableView.registerNib(xib, forCellReuseIdentifier: "RSSItemCell")
     }
     
+    /*
     override func shouldAutorotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation) -> Bool {
         
         if deviceIsPad() {
@@ -138,6 +140,7 @@ class ListViewController: UITableViewController,
             return toInterfaceOrientation == UIInterfaceOrientation.Portrait
         }
     }
+    */
     
     
     // - UITableView DataSource
@@ -159,9 +162,9 @@ class ListViewController: UITableViewController,
         var item: RSSItem = channel!.items[indexPath.row]
         //var cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "UITableViewCell")
         //cell.textLabel.text = item.title
-        cell.authorLabel.text = item.title
-        cell.titleLabel.text = item.link
-        cell.catagoryLabel.text = "Pro"
+        cell.authorLabel!.text = item.title
+        cell.titleLabel!.text = item.link
+        cell.catagoryLabel!.text = "Pro"
         
         if BNRFeedStore.sharedStore.hasItemBennRead(item) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
