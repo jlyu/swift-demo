@@ -174,7 +174,7 @@ class RSSChannel: NSObject, NSCoding, NSCopying,
         var copy = RSSChannel()
         copy.title = self.title
         copy.infoString = self.infoString
-        copy.items = self.items.copy() //??
+        copy.items = self.items //.copy() //TODO
         return copy
     }
 

@@ -35,6 +35,7 @@ class WebViewController: UIViewController,
         
     }
     
+    /*
     override func shouldAutorotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation) -> Bool {
         if deviceIsPad() {
             return true
@@ -42,6 +43,7 @@ class WebViewController: UIViewController,
             return toInterfaceOrientation == UIInterfaceOrientation.Portrait
         }
     }
+    */
     
     func splitViewController(svc: UISplitViewController!, willHideViewController aViewController: UIViewController!, withBarButtonItem barButtonItem: UIBarButtonItem!, forPopoverController pc: UIPopoverController!) {
         
