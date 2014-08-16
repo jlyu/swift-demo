@@ -102,6 +102,4 @@ class TransformControlsViewController: UIViewController {
         
         return (rotation, scale, translation)
     }
-
-
 }
